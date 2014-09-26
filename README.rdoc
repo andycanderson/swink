@@ -1,6 +1,6 @@
-==Swink!
+==Swink!(c)
 
-Swink is a job search and recruiting platform.
+Swink(c) is a job search and recruiting platform.
 
 To do:
 
@@ -12,8 +12,7 @@ To do:
 
 * Add Angular JS
 
-* Features
-
+[Features]
 	* accordian of applicants
 
 	* search bar for recruiters
