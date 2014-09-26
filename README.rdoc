@@ -1,6 +1,6 @@
 ==Swink!
 
-Swink! is a job search and recruiting platform.
+Swink is a job search and recruiting platform.
 
 To do:
 
