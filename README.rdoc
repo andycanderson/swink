@@ -1,6 +1,6 @@
 ==Swink!
 
-Swink is a job search and recruiting platform.
+Swink! is a job search and recruiting platform.
 
 To do:
 
@@ -12,10 +12,4 @@ To do:
 
 * Add Angular JS
 
-* Features
-
-		-- accordian of applicants
-
-		-- search bar for recruiters
-
-		-- edit/create pages for applicants and recruiters. 
+* Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters. 
