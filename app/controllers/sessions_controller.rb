@@ -6,20 +6,18 @@ class SessionsController < ApplicationController
   def create
     # if errors out because email not found short circuit authentication
     begin
-      user = User.find_by(email: params[:user_email].downcase)
+      user = User.find_by(email: params[:email].downcase)
     rescue
       user = false
     end
 
     if user && user.authenticate(params[:password])
+      # sets user.id to a key in session
       session[:user_id] = user.id.to_s
       # brings user to their home page
-
-      redirect_to home_path
+      binding.pry
     else
-      # redirect_to root_path for invalid email/pw
-      # also makes a flash notice for user
-      redirect_to root_path, :flash => { :login => "Incorrect email or password" }
+      
     end
   end
 
