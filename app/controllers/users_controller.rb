@@ -8,6 +8,12 @@ class UsersController < ApplicationController
     if user.save
       # saves user id to session to start
       session[:user_id] = user.id.to_s
+      # direct to applicant or recruiter
+      if user.type == "Applicant"
+
+      else
+
+      end
     else
       
     end

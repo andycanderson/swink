@@ -1,28 +1,15 @@
-== README
+==Swink!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Swink! is a job search and recruiting platform.
 
-Things you may want to cover:
+To do:
 
-* Ruby version
+* Landing pages for Applicants and Recruiters
 
-* System dependencies
+* Linkedin logins
 
-* Configuration
+* APIs to consume and generate
 
-* Database creation
+* Add Angular JS
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Features: accordian of applicants, search bar for recruiters, edit/create pages for applicants and recruiters. 
