@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-    # by default rails uses cookies to store sessions
 
   def new
   end
