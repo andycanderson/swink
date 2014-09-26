@@ -13,8 +13,8 @@ To do:
 * Add Angular JS
 
 * [Features]
-	** accordian of applicants
+	[feature] accordian of applicants
 
-	** search bar for recruiters
+	[feature] search bar for recruiters
 
-	** edit/create pages for applicants and recruiters. 
+	[feature] edit/create pages for applicants and recruiters. 
