@@ -9,7 +9,7 @@
 <%= form_for :user, url: "/users" do |f| %>
 	<%= f.email_field :email, placeholder: "Enter Email", id: "create_email"%>
 	<%= f.text_field :name, placeholder: "Enter Name", id: "create_name"%>
-	<%= f.select(:type, [["Applicant", "applicant"],["Recruiter","recruiter"]])%>
+	<%= f.select(:type, [["Applicant", "Applicant"],["Recruiter","Recruiter"]])%>
 	<%= f.password_field :password, placeholder: "Enter Password", id: "create_password"%>
 	<%= f.password_field :password_confirmation , placeholder: "Confirm Password", id: "password_confirm"%>
 	<%= f.submit "Create Account", :class => 'submit'%>

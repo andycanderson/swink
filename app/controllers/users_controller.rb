@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def create
-    binding.pry
+    # type indicates sub class of applicant or recruiter 
     user = User.new(params.require(:user).permit(:email, :name, :type, :password, :password_confirmation))
+    user.email.downcase!
     # saves users email in downcase form
     if user.save
       # saves user id to session
