@@ -12,4 +12,6 @@ To do:
 
 * Add Angular JS
 
-* Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters. 
+* Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters.
+
+* A Branch
