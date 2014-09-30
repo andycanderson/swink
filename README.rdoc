@@ -12,4 +12,15 @@ To do:
 
 * Add Angular JS
 
-* Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters. 
+* Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters.
+
+* A Branch
+
+* recruiter has_many :postings
+* posting belongs_to recruiter
+* posting has_many :tags
+* tag belongs_to :posting
+* tag belongs_to :profile
+* profile has_many :postings, through: :tags
+* posting belongs_to :applicant
+* applicant has_one :profile

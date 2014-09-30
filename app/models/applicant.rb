@@ -1,2 +1,3 @@
 class Applicant < User
+  
 end
