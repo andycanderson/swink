@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # if errors out because email not found short circuit authentication
+    # errors out because email not found short circuit authentication
     begin
       user = User.find_by(email: params[:email].downcase)
     rescue
