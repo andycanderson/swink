@@ -1,4 +1,5 @@
 ==Swink!
+=This is A Branch
 
 Swink! is a job search and recruiting platform.
 
@@ -14,11 +15,14 @@ To do:
 
 * Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters.
 
-* A Branch
-
 * recruiter has_many :postings
 * posting belongs_to recruiter
+
+
 * posting has_many :tags
+* applicant has many postings
+* posting belongs to many applicants through tags
+
 * tag belongs_to :posting
 * tag belongs_to :profile
 * profile has_many :postings, through: :tags
