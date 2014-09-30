@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
       # sets user.id to a key in session
       session[:user_id] = user.id.to_s
       # brings user to their home page
-      binding.pry
+      sendMeHome(user)
     else
-      
+      redirect_to root_path
     end
   end
 
@@ -25,4 +25,13 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  def sendMeHome user 
+      if user.type =="Applicant"
+        redirect_to "/applicant"
+      else
+        redirect_to "/recruiter"
+      end
+  end
+
 end
