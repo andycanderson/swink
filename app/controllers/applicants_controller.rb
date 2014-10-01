@@ -4,7 +4,8 @@ class ApplicantsController < ApplicationController
 
     @tags = myprofile.getTagArray
 
+    
     @feed = []
-    @feed = Posting.all.where(tag_id: )
+    # @feed = Posting.all.where(tag_id: )
   end
 end

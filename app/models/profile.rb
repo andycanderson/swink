@@ -17,15 +17,15 @@ class Profile < ActiveRecord::Base
     if tag_list.include? "ruby on rails"
       arr << "ruby on rails"
     end
-    if tag_elist.include? "javascript"
+    if tag_list.include? "javascript"
       arr << "javascript"
     end
     arr
   end
 
   def getFeed tags
-  
-
+    # jobs = []
+    # tags.each do |tag| 
 
   end
 end
