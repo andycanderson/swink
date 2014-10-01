@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Tag.destroy_all
+Tag.create(name: "Javascript")
+Tag.create(name: "Objective-c")
+Tag.create(name: "C++")
+Tag.create(name: "Ruby on Rails")
