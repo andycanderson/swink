@@ -10,7 +10,9 @@ Practice::Application.routes.draw do
 
 
   get '/applicant' => 'applicants#index'
-  
+  get '/myprofile' => 'profile#show', as: :my_profile
+  patch '/myprofile' => 'profile#update'
+
   delete '/signout' => 'sessions#destroy', as: :sign_out
 
 
