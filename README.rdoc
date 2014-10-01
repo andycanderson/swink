@@ -1,5 +1,4 @@
-==Swink!
-=This is A Branch
+=Swink!
 
 Swink! is a job search and recruiting platform.
 

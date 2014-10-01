@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def sendMeHomeAndCreateProfile user 
-      if user.type =="Applicant"
+      if user.type == "Applicant"
         Profile.create(applicant_id: user.id)
         redirect_to "/myprofile"
       else
