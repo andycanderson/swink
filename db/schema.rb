@@ -11,15 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001012512) do
+ActiveRecord::Schema.define(version: 20141001030918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "posting_tag", id: false, force: true do |t|
-    t.integer "posting_id", null: false
-    t.integer "tag_id",     null: false
+  create_table "likes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "profile_id"
+    t.integer  "posting_id"
   end
+
+  add_index "likes", ["posting_id"], name: "index_likes_on_posting_id", using: :btree
+  add_index "likes", ["profile_id"], name: "index_likes_on_profile_id", using: :btree
 
   create_table "posting_tags", force: true do |t|
     t.datetime "created_at"
@@ -36,6 +41,14 @@ ActiveRecord::Schema.define(version: 20141001012512) do
     t.integer  "recruiter_id"
     t.integer  "like"
     t.integer  "dislike"
+  end
+
+  create_table "profiles", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "applicant_id"
+    t.string   "link"
+    t.string   "tag_list"
   end
 
   create_table "tags", force: true do |t|

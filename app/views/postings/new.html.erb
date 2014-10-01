@@ -2,17 +2,18 @@
 
 <%=form_for :posting, url: "/newposting" do |f| %>
 	<%=f.label :title%>
-	<%=f.text_field :title%>
+	<%=f.text_field :title, placeholder: "Enter job title"%>
 	<br>
 	<%=f.label :description%>
-	<%=f.text_area :description%>
-
+	<%=f.text_area :description, placeholder: "Enter job description"%>
 	<br>
+	<br>
+	<h4>Tags:</h4>
 	<% allPossibleTags.each do |x| %>
 	<%=f.label x[:name]%>
 	<%=f.check_box x[:name]%>
 	<br>
 	<%end%>
-
+	<br>
 	<%=f.submit "create post"%>
 <%end%>
