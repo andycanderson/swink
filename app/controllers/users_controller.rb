@@ -10,15 +10,16 @@ class UsersController < ApplicationController
       # saves user id to session to start
       session[:user_id] = user.id.to_s
       # direct to applicant or recruiter
-      sendMeHome(user)
+      sendMeHomeAndCreateProfile(user)
     else
       redirect_to root_path
     end
   end
 
-  def sendMeHome user 
+  def sendMeHomeAndCreateProfile user 
       if user.type =="Applicant"
-        redirect_to "/applicant"
+        Profile.create(applicant_id: user.id)
+        redirect_to "/myprofile"
       else
         redirect_to "/recruiter"
       end

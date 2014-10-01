@@ -2,8 +2,16 @@ class Posting < ActiveRecord::Base
   belongs_to :recruiter
   has_many :applicants, through: :likes
 
-  has_and_belongs_to_many :tags
+  has_many :posting_tags
+  has_many :tags, through: :posting_tags
 
+
+
+
+
+
+
+  # sets likes and dislikes to zero
   after_initialize :zero_out
 
   def zero_out
