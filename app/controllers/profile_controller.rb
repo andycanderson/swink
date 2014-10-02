@@ -14,4 +14,5 @@ class ProfileController < ApplicationController
     @current_user.profile.update(params.require(:patch).permit(:link, :tag_list))
     redirect_to applicant_home_path
   end
+
 end

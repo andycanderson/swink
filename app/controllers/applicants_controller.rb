@@ -7,9 +7,7 @@ class ApplicantsController < ApplicationController
     @tags = myprofile.getTagArray
     # gets postings for tags
     @feed = myprofile.getFeed(@tags)
-    # number of likes
-    # while (@feed.count)
+    @liked = myprofile.postings
 
-    # end
   end
 end

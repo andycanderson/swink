@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
   belongs_to :applicant
+  has_many :likes
   has_many :postings, through: :likes
 
 
@@ -30,5 +31,21 @@ class Profile < ActiveRecord::Base
       feed << search.postings
     end
     feed = feed.flatten.uniq.sort
+
+    # gets job created yesterday only
+    feed_returned = []
+    feed.map do |job|
+      if job.created_at.yday == Time.now.yday - 1
+        feed_returned << job
+      end
+    end
+
+    # this deletes all postings the user has dis/liked
+    feed_returned = feed_returned - self.postings 
+  end
+
+# returns list of liked jobs
+  def getLiked
+    self.postings.where(like: true)
   end
 end

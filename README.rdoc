@@ -27,3 +27,26 @@ To do:
 * profile has_many :postings, through: :tags
 * posting belongs_to :applicant
 * applicant has_one :profile
+
+
+
+My List of Tasks:
+
+Make job disappear from list after like/dislike
+dislike/like can only happen once per user per job
+- DONE Make jobs only of the previous day available
+(check by datetime)
+Add notification for recruiters when job is liked
+
+
+Recruiter side 
+- applicant search
+- fix routing for posting jobs
+
+
+
+
+
+
+
+
