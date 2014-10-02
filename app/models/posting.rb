@@ -6,10 +6,6 @@ class Posting < ActiveRecord::Base
   has_many :tags, through: :posting_tags
 
 
-
-
-
-
   # changed this in migrations
   # sets likes and dislikes to zero
   # after_initialize :zero_out
