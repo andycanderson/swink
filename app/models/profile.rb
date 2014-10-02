@@ -24,8 +24,9 @@ class Profile < ActiveRecord::Base
   end
 
   def getFeed tags
-    # jobs = []
-    # tags.each do |tag| 
-
+    jobs = []
+    tags.each do |tag| 
+      Posting_tag.posting.where(tag_id: tag)
+    end
   end
 end
