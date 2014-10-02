@@ -1,16 +1,15 @@
 class ApplicantsController < ApplicationController
   def index
+    
+    # gets profile
     myprofile = @current_user.profile
-
+    # gets tags to query postings for
     @tags = myprofile.getTagArray
+    # gets postings for tags
+    @feed = myprofile.getFeed(@tags)
+    # number of likes
+    # while (@feed.count)
 
-
-    @feed = []
-    # @feed = Posting.all.where(tag_id: )
-    @tags.each do |tag|
-      search = Tag.find_by(name: tag.capitalize) 
-      @feed << search.postings
-    end
-    @feed = @feed.flatten.uniq.sort
+    # end
   end
 end

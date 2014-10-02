@@ -24,9 +24,11 @@ class Profile < ActiveRecord::Base
   end
 
   def getFeed tags
-    jobs = []
-    tags.each do |tag| 
-      Posting_tag.posting.where(tag_id: tag)
+    feed=[]
+    tags.each do |tag|
+      search = Tag.find_by(name: tag.capitalize) 
+      feed << search.postings
     end
+    feed = feed.flatten.uniq.sort
   end
 end

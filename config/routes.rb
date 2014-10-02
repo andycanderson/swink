@@ -15,5 +15,6 @@ Practice::Application.routes.draw do
 
   delete '/signout' => 'sessions#destroy', as: :sign_out
 
-
+  get '/like/:id' => 'likes#likesave', as: :like
+  get '/dislike/:id' => 'likes#dislikesave', as: :dislike
 end

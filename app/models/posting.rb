@@ -10,14 +10,14 @@ class Posting < ActiveRecord::Base
 
 
 
-
+  # changed this in migrations
   # sets likes and dislikes to zero
-  after_initialize :zero_out
+  # after_initialize :zero_out
 
-  def zero_out
-    self.dislike = 0
-    self.like = 0
-  end
+  # def zero_out
+  #   self.dislike = 0
+  #   self.like = 0
+  # end
 
 
 end

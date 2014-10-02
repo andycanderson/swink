@@ -9,5 +9,8 @@
 <%@feed.each do |job|%>
 <p>title: <%=job[:title]%></p>
 <p>description: <%=job[:description]%></p>
+<%=link_to "Like", like_path(job)%>
+<%=link_to "Dislike", dislike_path(job)%>
+<!-- ADD LIKE DISLIKE -->
 <br>
 <%end%>
