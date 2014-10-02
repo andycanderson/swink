@@ -6,3 +6,8 @@
 	<%end%>
 </h2>
 <h2>Feed</h2>
+<%@feed.each do |job|%>
+<p>title: <%=job[:title]%></p>
+<p>description: <%=job[:description]%></p>
+<br>
+<%end%>

@@ -1,4 +1,4 @@
 class PostingTag < ActiveRecord::Base
-  belongs_to :postings
-  belongs_to :tags
+  belongs_to :posting
+  belongs_to :tag
 end
