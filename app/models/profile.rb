@@ -28,21 +28,24 @@ class Profile < ActiveRecord::Base
   def getFeed tags
     feed=[]
     tags.each do |tag|
-      search = Tag.find_by(name: tag.capitalize) 
-      feed << search.postings
+      search = Tag.find_by(name: tag) 
+      begin
+        feed << search.postings
+      rescue
+      end
     end
     feed = feed.flatten.uniq.sort
 
     # gets job created yesterday only
-    feed_returned = []
-    feed.map do |job|
-      if job.created_at.yday == Time.now.yday - 1
-        feed_returned << job
-      end
-    end
+    # feed_returned = []
+    # feed.map do |job|
+    #   if job.created_at.yday == Time.now.yday - 1
+    #     feed_returned << job
+    #   end
+    # end
 
     # this deletes all postings the user has dis/liked
-    feed_returned = feed_returned - self.postings 
+    # feed_returned = feed_returned - self.postings 
   end
 
 # returns list of liked jobs
