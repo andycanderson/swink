@@ -22,6 +22,15 @@ class Profile < ActiveRecord::Base
     if tag_list.include? "javascript"
       arr << "javascript"
     end
+    if tag_list.include? "angular js"
+      arr << "angular js"
+    end
+    if tag_list.include? "node"
+      arr << "node"
+    end
+    if tag_list.include? "django"
+      arr << "django"
+    end
     arr
   end
 
@@ -37,15 +46,16 @@ class Profile < ActiveRecord::Base
     feed = feed.flatten.uniq.sort
 
     # gets job created yesterday only
-    # feed_returned = []
-    # feed.map do |job|
-    #   if job.created_at.yday == Time.now.yday - 1
-    #     feed_returned << job
-    #   end
-    # end
+    feed_returned = []
+    feed.map do |job|
+      if job.created_at.yday == Time.now.yday
+    # if job.created_at.yday == Time.now.yday - 1
+        feed_returned << job
+      end
+    end
 
     # this deletes all postings the user has dis/liked
-    # feed_returned = feed_returned - self.postings 
+    feed_returned = feed_returned - self.postings 
   end
 
 # returns list of liked jobs

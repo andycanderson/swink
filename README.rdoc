@@ -28,11 +28,13 @@ To do:
 My List of Tasks:
 - dislike/like can only happen once per user per job
 
+For no seeds, feed notifications count, search for tags when no tags are present
 
 
 Recruiter side 
 - fix routing for posting jobs
 - notifications for liked jobs
+- maybe applicants that have liked recruiter's posting get added to string that for recruiter's
 
 
 

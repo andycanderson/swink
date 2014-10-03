@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :is_logged_in?, :get_current_user
+  skip_before_action :is_logged_in?
   def create
     # type indicates sub class of applicant or recruiter 
     user = User.new(params.require(:user).permit(:email, :name, :type, :password, :password_confirmation))
