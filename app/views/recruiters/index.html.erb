@@ -20,4 +20,9 @@
 <br><br><br>
 
 <h2>notifications</h2>
-<!-- notifications -->
+<p>Notification Count: <%=@notifications.count%></p>
+<%@notifications.each do |notification| %>
+<%=link_to notification.profile.applicant.name, seeprofile_path(notification.profile)%>
+<%end%>
+<br><br><br><br>
+<br><br><br>

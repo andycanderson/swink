@@ -19,4 +19,9 @@ class LikesController < ApplicationController
     # temp redirect to job list
     redirect_to applicant_home_path
   end
+
+  def removeNotification
+    # patch to this method to remove notification
+    # make routes to here
+  end
 end
