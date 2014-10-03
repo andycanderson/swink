@@ -61,6 +61,6 @@ class Profile < ActiveRecord::Base
       end
     end
     # return all profiles that match the search tags
-    profiles.uniq.first
+    profiles.uniq
   end
 end

@@ -1,12 +1,19 @@
 class RecruitersController < ApplicationController
   def index
-    
-    @mypostings = @current_user.postings
-  end
 
-  def search_results
-    # searches based on tags input and returns postings
-    # that matches
+    # fetch postings - with notifications 
+    # display the profiles they are attached to
+    # remove notification recruiter
+    # views profile
+
+    @mypostings = @current_user.postings
     
+
+    @notifications = @current_user.getNotifications(@mypostings)
+    # @mypostings.each do |posting|
+    #   if posting.likes !=[]
+    #     @notifications = end
+    #   likes
+    # end
   end
 end
