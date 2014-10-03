@@ -1,6 +1,8 @@
 class Posting < ActiveRecord::Base
 
-  has_many :applicants, through: :likes
+  has_many :profiles, through: :likes
+  has_many :likes
+
   belongs_to :recruiter
 
   has_and_belongs_to_many :tags
