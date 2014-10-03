@@ -1,8 +1,6 @@
 class RecruitersController < ApplicationController
   def index
-
-    # fetch postings - with notifications 
-    # display the profiles they are attached to
+    
     # remove notification recruiter
     # views profile
 

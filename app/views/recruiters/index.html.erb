@@ -20,4 +20,10 @@
 <br><br><br>
 
 <h2>notifications</h2>
-<!-- notifications -->
+<p>Notification Count: <%=@notifications.count%></p>
+<%@notifications.each do |notification| %>
+<p><%=notification.id%></p>
+<%=link_to notification.profile.applicant.name, removenotification_path(notification), method: :patch%>
+<%end%>
+<br><br><br><br>
+<br><br><br>
