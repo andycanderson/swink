@@ -20,8 +20,12 @@ class LikesController < ApplicationController
     redirect_to applicant_home_path
   end
 
-  def removeNotification
+  def removenotification
     # patch to this method to remove notification
     # make routes to here
+  
+    like = Like.find(params[:id])
+    like.update(notify: false)
+    redirect_to seeprofile_path(like.profile_id)
   end
 end

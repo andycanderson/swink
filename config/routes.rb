@@ -23,4 +23,5 @@ Practice::Application.routes.draw do
   post '/searchprofile' => 'profile#search'
   get '/profile/:id' => 'profile#seeprofile', as: :seeprofile
 
+  patch '/notification/:id' => 'likes#removenotification', as: :removenotification
 end
