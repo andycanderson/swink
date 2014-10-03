@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_action :is_logged_in?, :get_current_user
+  skip_before_action :is_logged_in?
   def index
     
   end
