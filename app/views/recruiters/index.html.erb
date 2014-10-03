@@ -1,2 +1,18 @@
 <h1>Recruiter Home</h1>
-<a href="/newposting">Make a New Job Posting</a>
+<%=link_to "Make a New Job Posting", new_post_path%>
+
+
+<!-- show all postings made by this guy -->
+<%@mypostings.each do |posting|%>
+<p>title: <%=posting[:title]%></p>
+<p>description: <%=posting[:description]%></p>
+<br>
+<%end%>
+
+<%=form_for :search, url: "/searchprofile" do |f|%>
+<% allPossibleTags.each do |x| %>
+<%=f.label x[:name]%>
+<%=f.check_box x[:name]%>
+<%end%>
+<%=f.submit "search profiles"%>
+<%end%>

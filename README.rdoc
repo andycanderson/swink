@@ -27,3 +27,23 @@ To do:
 * profile has_many :postings, through: :tags
 * posting belongs_to :applicant
 * applicant has_one :profile
+
+
+
+My List of Tasks:
+
+- dislike/like can only happen once per user per job
+
+
+
+Recruiter side 
+- make a profile able to be viewed from recruiters
+- fix routing for posting jobs
+- notifications for liked jobs
+
+
+
+
+
+
+
