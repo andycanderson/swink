@@ -1,7 +1,9 @@
-<h2>searched</h2>
+<h2>Search results from matching profiles</h2>
+
 <%@search_result.each do |profile|%>
 	<%=profile.applicant.name%>
 	<%=profile.applicant.email%>
 	<%=link_to "#{profile.applicant.name}'s Profile", seeprofile_path(profile)%> 
 	<br>
 <%end%>
+

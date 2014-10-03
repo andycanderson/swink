@@ -4,8 +4,6 @@ Swink! is a job search and recruiting platform.
 
 To do:
 
-* Landing pages for Applicants and Recruiters
-
 * Linkedin logins
 
 * APIs to consume and generate
@@ -16,12 +14,9 @@ To do:
 
 * recruiter has_many :postings
 * posting belongs_to recruiter
-
-
 * posting has_many :tags
 * applicant has many postings
 * posting belongs to many applicants through tags
-
 * tag belongs_to :posting
 * tag belongs_to :profile
 * profile has_many :postings, through: :tags
@@ -31,13 +26,11 @@ To do:
 
 
 My List of Tasks:
-
 - dislike/like can only happen once per user per job
 
 
 
 Recruiter side 
-- make a profile able to be viewed from recruiters
 - fix routing for posting jobs
 - notifications for liked jobs
 

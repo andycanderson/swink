@@ -14,7 +14,8 @@ class ProfileController < ApplicationController
 
 
 
-  def search    
+  def search
+      
     tags = []
     params[:search].each do |k , v|
       if v == "1"
@@ -22,6 +23,7 @@ class ProfileController < ApplicationController
       end
     end
     @search_result = Profile.search(tags)
+  
     # this sends you to the search view in profile
   end
 
