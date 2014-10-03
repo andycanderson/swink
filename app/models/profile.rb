@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
   has_many :postings, through: :likes
 
 
+
   # this determines what gets queried
   def getTagArray
     arr = []
@@ -47,5 +48,19 @@ class Profile < ActiveRecord::Base
 # returns list of liked jobs
   def getLiked
     self.postings.where(like: true)
+  end
+
+  def self.search tags
+    profiles = []
+    allprofiles = Profile.all()
+    allprofiles.each do |profile|
+      tags.each do |tag|
+        if profile.tag_list.include? tag.downcase
+          profiles << profile
+        end 
+      end
+    end
+    # return all profiles that match the search tags
+    profiles.uniq.first
   end
 end
