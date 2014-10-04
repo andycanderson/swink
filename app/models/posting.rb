@@ -5,4 +5,8 @@ class Posting < ActiveRecord::Base
 
   has_many :posting_tags
   has_many :tags, through: :posting_tags
+
+  def as_json (options={})
+    super(:only => [:title, :description, :like, :dislike])
+  end
 end
