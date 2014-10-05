@@ -6,6 +6,11 @@ describe User do
 		expect(user).to_not be_valid 
 	end
 
+	it "should fail if email doesn't match regex" do 
+		user = User.new(email: /^.+@\w+.[a-z]+.[a-z]+$/.to_s)
+		expect(user).to_not be_valid
+	end
+
 	it "should fail without a valid name" do
 		user = User.new(name: nil)
 		expect(user).to_not be_valid 
