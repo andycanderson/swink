@@ -1,4 +1,7 @@
 class Posting < ActiveRecord::Base
+  validates_presence_of :title, :description
+
+
   belongs_to :recruiter
   has_many :likes
   has_many :profiles, through: :likes

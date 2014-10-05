@@ -4,7 +4,7 @@ class PostingsController < ApplicationController
   end
 
   def create
-  
+    
     tags = []
     params[:posting].each do |k, v|
       if k != "title" && k != "description" && v == "1"
