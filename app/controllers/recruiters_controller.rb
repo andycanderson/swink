@@ -1,17 +1,15 @@
 class RecruitersController < ApplicationController
+layout "recruiters"
   def index
-    
-    # remove notification recruiter
-    # views profile
+    if isRecruiter?
+      @mypostings = @current_user.postings
+      @notifications = @current_user.getNotifications(@mypostings)
+    else
+      redirect_to '/applicant'
+    end
+  end
 
-    @mypostings = @current_user.postings
-    
-
-    @notifications = @current_user.getNotifications(@mypostings)
-    # @mypostings.each do |posting|
-    #   if posting.likes !=[]
-    #     @notifications = end
-    #   likes
-    # end
+  def isRecruiter?  
+    @current_user.type =="Recruiter"
   end
 end

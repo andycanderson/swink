@@ -13,15 +13,11 @@ class LikesController < ApplicationController
     post = Posting.find(params[:id])
     post.dislike += 1
     post.save
-
     # temp redirect to job list
     redirect_to applicant_home_path
   end
 
   def removenotification
-    # patch to this method to remove notification
-    # make routes to here
-  
     like = Like.find(params[:id])
     like.update(notify: false)
     redirect_to seeprofile_path(like.profile_id)

@@ -24,4 +24,8 @@ Practice::Application.routes.draw do
   get '/profile/:id' => 'profile#seeprofile', as: :seeprofile
 
   patch '/notification/:id' => 'likes#removenotification', as: :removenotification
+
+  scope 'api', defaults: {format: "json"} do
+    get '/' => 'apis#index'
+  end
 end
