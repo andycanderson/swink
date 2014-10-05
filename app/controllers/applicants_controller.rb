@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
-
+layout "applicants"
   def index
     if isApplicant? 
       # gets profile

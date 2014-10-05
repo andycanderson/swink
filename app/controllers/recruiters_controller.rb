@@ -1,5 +1,5 @@
 class RecruitersController < ApplicationController
-
+layout "recruiters"
   def index
     if isRecruiter?
       @mypostings = @current_user.postings

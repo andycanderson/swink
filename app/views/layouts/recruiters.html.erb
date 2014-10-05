@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="recruiters-body">
 
 <%if !(current_page? controller: 'home', action: 'index')%>
 <%= link_to "Log Out", sign_out_path, method: :delete %>
