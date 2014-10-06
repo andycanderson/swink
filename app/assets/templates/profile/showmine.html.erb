@@ -1,0 +1,11 @@
+<h2>My Profile Edit Page</h2>
+
+<%=form_for @profile, as: :patch, url: "/myprofile" do |f|%>
+<%=f.label :link %>
+<%=f.text_area :link %>
+<br>
+<%=f.label :tag_list%>
+<%=f.text_area :tag_list%>
+<br>
+<%=f.submit "Save Profile"%>
+<%end%>
