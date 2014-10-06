@@ -17,7 +17,7 @@ class ProfileController < ApplicationController
     @current_user.profile.save
     binding.pry
     # redirect_to applicant_home_path
-    
+    @redirect = '/'
   end
 
 
