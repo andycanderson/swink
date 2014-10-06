@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  validates_presence_of :applicant_id
   belongs_to :applicant
   has_many :likes
   has_many :postings, through: :likes
