@@ -4,24 +4,7 @@
 	<!-- where stuff gets generated -->
 </div>
 
-
 <%=link_to "Edit Profile", my_profile_path%>
-<br>
-<div ng-click="getProfileInfo()" 
-ng-init="editProfile=false">EDIT PROFILE</div>
-<h2 ng-model="profile"></h2>
-<div ng-if="editProfile">
-
-	<!-- patch to /myprofile -->
-	<form ng-submit="saveProfile(link, tag_list)">
-		<h2>Link</h2>
-		<input type="text" ng-model="link" name="text" />
-		<h2>Tag List</h2>
-		<textarea type="text" ng-model="tag_list" name="text" /></textarea>
-		<input type="submit" id="submit" value="Submit" />
-	</form>
-</div>
-
 <br><br>
 <h2>Based on These Tags: <%@tags.each do |x|%>
 	<%=x%>
