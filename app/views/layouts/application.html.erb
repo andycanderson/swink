@@ -1,4 +1,4 @@
-r<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Practice</title>
@@ -6,13 +6,13 @@ r<!DOCTYPE html>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="recruiters-body">
+<body>
+	
+<%= render 'layouts/header' %>
 
-<%if !(current_page? controller: 'home', action: 'index')%>
-<%= link_to "Log Out", sign_out_path, method: :delete %>
-<%end%>
-
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>
