@@ -26,8 +26,6 @@ To do:
 
 
 My List of Tasks:
-- dislike/like can only happen once per user per job
-
 For no seeds, feed notifications count, search for tags when no tags are present
 
 
