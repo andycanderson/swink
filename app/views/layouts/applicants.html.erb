@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="ApplicantApp">
 <head>
-  <title>Practice</title>
+  <title>Swink!</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.min.js"></script>
@@ -21,8 +21,21 @@
 	.config(["$httpProvider", function($httpProvider){
 	  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 	}])
+
 	.controller('applicantCtrl', ['$scope', '$http', function($scope, $http) {
 		console.log("Angular Ready");
+
+		// when first landing or refreshing
+		$scope.load = function(){$http.get('/applicant.json').success(function(data){
+				$scope.editProfile = false;
+				$scope.link = data.link;
+				$scope.tag_list = data.tag_list;
+				$scope.tags = data.tags;
+				$scope.feed = data.feed;
+				$scope.liked = data.liked;
+			});
+		}
+		$scope.load();
 
 		$scope.getProfileInfo = function(){
 			$http.get('/myprofile.json').success(function(data){
@@ -36,15 +49,27 @@
 			$http.patch('/myprofile.json', {link: link, tag_list: tag_list}).success(function(data){
 					// hide after changing
 					$scope.editProfile = !$scope.editProfile;
-					// $http.get('/myprofile.json').success(function(data){
-					// 	$scope.link = data.link;
-					// 	$scope.tag_list = data.tag_list;
-					// 	$scope.editProfile = !$scope.editProfile;
-					// });
+					$http.get('/applicant.json').success(function(data){
+						console.log(data);
+						$scope.profileData = data;
+						$scope.tags = data.tags;
+						$scope.feed = data.feed;
+						$scope.liked = data.feed;
+					});
 			});
 		}
 
+		$scope.like = function(id){
+			$http.get('/like/'+id).success(function(data){
+				$scope.load();
+			});
+		}
 
+		$scope.dislike = function(id){
+			$http.get('/dislike/'+id).success(function(data){
+				$scope.load();
+			});
+		}
 
 	 }]);
 </script>

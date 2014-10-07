@@ -1,5 +1,7 @@
 class ApplicantsController < ApplicationController
-layout "applicants"
+  layout "applicants"
+  respond_to :json, :html
+
   def index
     if isApplicant? 
       # gets profile
@@ -8,11 +10,15 @@ layout "applicants"
       @tags = myprofile.getTagArray
       # gets postings for tags
       @feed = myprofile.getFeed(@tags)
-      @liked = myprofile.postings
+      @liked = myprofile.getLiked
+      @hashy = {myprofile: myprofile, tags: @tags, feed: @feed, liked: @liked}
+      respond_with(@hashy)
+
     else
       redirect_to '/recruiter'
     end
 
+    
   end
 
   def isApplicant?  

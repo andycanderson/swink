@@ -1,14 +1,8 @@
 <h1>Applicant Home</h1>
 
-<div ng-view>
-	<!-- where stuff gets generated -->
-</div>
-
-
-<%=link_to "Edit Profile", my_profile_path%>
 <br>
 <div ng-click="getProfileInfo()" 
-ng-init="editProfile=false">EDIT PROFILE</div>
+ng-init="editProfile=false">CLICK TO EDIT PROFILE</div>
 <h2 ng-model="profile"></h2>
 <div ng-if="editProfile">
 
@@ -23,33 +17,29 @@ ng-init="editProfile=false">EDIT PROFILE</div>
 </div>
 
 <br><br>
-<h2>Based on These Tags: <%@tags.each do |x|%>
-	<%=x%>
-	<%end%>
-</h2>
+
+
+<h2>Based on These Tags: </h2>
+<div ng-repeat="tag in tags">{{tag}}</div>
 <br>
-<h2>Feed</h2>
-<%if @feed == [] %>
-	<h2>No Jobs In Your Feed</h2>
-<%else%>
-	<%@feed.each do |job|%>
-	<p>title: <%=job[:title]%></p>
-	<p>description: <%=job[:description]%></p>
-	<%=link_to "Like", like_path(job)%>
-	<%=link_to "Dislike", dislike_path(job)%>
+<h2>Feed:</h2>
+<div ng-repeat="job in feed">
 	<br>
-	<%end%>
-<%end%>
+	<h2>{{job.title}}</h2>
+	<p>{{job.description}}</p>
+	<div ng-click="like(job.id)">Like</div>
+	<br>
+	<div ng-click="dislike(job.id)">Dislike</div>
+	<p>{{job.created_at}}</p>
+
+</div>
 
 <br>
-<br>
-<h2>I liked these jobs: </h2>
-<%if @liked == [] %>
-	<h2>No Liked Jobs In Your Feed</h2>
-<%else%>
-	<%@liked.each do |job|%>
-	<p>title: <%=job[:title]%></p>
-	<p>description: <%=job[:description]%></p>
+
+<h2>Liked Jobs: </h2>
+<div ng-repeat="job in liked">
+	<h2>{{job.title}}</h2>
+	<p>{{job.description}}</p>
 	<br>
-	<%end%>
-<%end%>
+</div>
+

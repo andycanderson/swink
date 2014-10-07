@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="RecruiterApp">
 <head>
-  <title>Practice</title>
+  <title>Swink!</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.min.js"></script>
   <%= csrf_meta_tags %>
+  
 </head>
 
 <body class="recruiters-body" ng-controller="recruiterCtrl">
@@ -16,7 +18,7 @@
 <%= yield %>
 
 <script>
-	angular.module('RecruiterApp', ["templates"]).controller('recruiterCtrl', ['$scope', '$http', function($scope, $http) {
+	angular.module('RecruiterApp', []).controller('recruiterCtrl', ['$scope', '$http', function($scope, $http) {
 		console.log("Angular Ready");
 
 		

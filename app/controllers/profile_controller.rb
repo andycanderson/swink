@@ -1,8 +1,8 @@
 class ProfileController < ApplicationController
-
   respond_to :json, :html
 
   def showmine
+    # gets this when EDIT PROFILE is clicked
     @profile = Profile.find_by(applicant_id: @current_user)
     @tag_list = @profile.tag_list
     @link = @profile.link
@@ -15,12 +15,6 @@ class ProfileController < ApplicationController
     @current_user.profile.link = params[:link]
     @current_user.profile.tag_list = params[:tag_list]
     @current_user.profile.save
-    # redirect_to applicant_home_path
-    # @redirect = '/'
-    # respond_with do |format|
-    #   format.json { status :204 }
-    # end
-
     respond_to do |format|
       format.json { head :ok }
     end

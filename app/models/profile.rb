@@ -55,10 +55,10 @@ class Profile < ActiveRecord::Base
     # gets job created yesterday only
     feed_returned = []
     feed.map do |job|
-      if job.created_at.yday == Time.now.yday
+      # if job.created_at.yday == Time.now.yday
     # if job.created_at.yday == Time.now.yday - 1
         feed_returned << job
-      end
+      # end
     end
 
     # this deletes all postings the user has dis/liked

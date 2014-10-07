@@ -1,10 +1,13 @@
 class LikesController < ApplicationController
+  respond_to :json, :html
+
+
   def likesave
     Like.create(posting_id: params[:id], profile_id: @current_user.profile.id, like: true, notify: true)
     post = Posting.find(params[:id])
     post.like += 1
     post.save    
-    # temp redirect to job list
+    
     redirect_to applicant_home_path    
   end
 
@@ -13,7 +16,7 @@ class LikesController < ApplicationController
     post = Posting.find(params[:id])
     post.dislike += 1
     post.save
-    # temp redirect to job list
+    
     redirect_to applicant_home_path
   end
 
