@@ -12,8 +12,19 @@
  *= require_tree .
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+
+
+
+/*Applicant Home*/
+.applicants-body{
+
+}
+
+/*Recruiter Home*/
+.recruiters-body{
+
+}
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -59,13 +70,6 @@ table {
   border-spacing: 0;
 }
 
-/*Applicant Home*/
-.applicants-body{
-
-}
-
-/*Recruiter Home*/
-.recruiters-body{
-
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
