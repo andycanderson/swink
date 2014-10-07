@@ -33,10 +33,18 @@
 		}
 
 		$scope.saveProfile = function(link, tag_list){
-			$http.patch('/myprofile', {link: link, tag_list: tag_list}).success(function(data){
-					$scope.data = data;
+			$http.patch('/myprofile.json', {link: link, tag_list: tag_list}).success(function(data){
+					// hide after changing
+					$scope.editProfile = !$scope.editProfile;
+					// $http.get('/myprofile.json').success(function(data){
+					// 	$scope.link = data.link;
+					// 	$scope.tag_list = data.tag_list;
+					// 	$scope.editProfile = !$scope.editProfile;
+					// });
 			});
 		}
+
+
 
 	 }]);
 </script>

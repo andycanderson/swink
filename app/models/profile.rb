@@ -9,7 +9,13 @@ class Profile < ActiveRecord::Base
   def getTagArray
     arr = []
     # downcase and get taglist of self
-    tag_list = self.tag_list.downcase 
+
+    if self.tag_list 
+      tag_list = self.tag_list.downcase
+    else
+      tag_list = ""
+    end
+
     if tag_list.include? "c++"
       arr << "c++"
     end
