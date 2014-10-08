@@ -55,10 +55,10 @@
 			}
 		}
 
-		// posting tag array
+		// initialize empty postingTagArray
 		$scope.postingTagArray =[];
 
-		// 
+		// Adding tag to array of postingtags
 		$scope.postingAddTag = function(tag, addRemove){
 			// add tag from array
 			if (addRemove == true){ 
@@ -73,7 +73,7 @@
 			console.log($scope.postingTagArray);
 		}
 
-		// to control toggle of posting array
+		// To control toggle of posting array
 		$scope.checkPostingArray = function(tagName){
 			// tag in posting array
 			if ($scope.postingTagArray.indexOf(tagName) != -1){
@@ -85,38 +85,68 @@
 			}
 		}
 
-		// make new posting
+		// Make new posting
 		$scope.makeNewPosting = function(title, description, postingTagArray){
 			console.log("making");
-			$http.post('/newposting', {title: title, description: description, postingTagArray: postingTagArray}).success(function(data){
-					$scope.newPosting = !$scope.newPosting;
-					$scope.getPostings();
-			});
+
+			// exit if no tags are inserted
+			if (postingTagArray.length == 0){
+				return
+			}
+			else{
+				$http.post('/newposting', {title: title, description: description, postingTagArray: postingTagArray}).success(function(data){
+						$scope.newPosting = !$scope.newPosting;
+						$scope.getPostings();
+				});
+			}
 		}
 
-		// load past jobs
+		// Runs when loaded
+		// Load all posted jobs by this recruiter
 		$scope.getPostings = function(){
 			$http.get('/recruiter.json').success(function(data){
 				$scope.postings = data.postings;
 				$scope.tags = data.tags;
+				$scope.notifications = data.notifications;
+				// related data for notifications
+				$scope.names = data.names;
+				$scope.emails = data.emails;
+				$scope.profiles = data.profiles;
 			});
 		}
-		// get all postings made by recruiter
+		// Get all postings made by recruiter
 		$scope.getPostings();
 
-		// search function
+		// Search for applicants
 		$scope.search = function(tags){
-			console.log(tags);
+			console.log(tags.length);
 			console.log("searching");
-			$http.post('/searchprofile', {tags: tags}).success(function(data){
-				console.log(data);
-				$scope.applicants = data;
-			});
+			// Skip search if no tags selected
+			if(tags.length == 0){
+				return;
+			}
+			else
+			{
+				$http.post('/searchprofile', {tags: tags}).success(function(data){
+					// get applicant's data
+					$scope.applicants = data.profiles;
+					$scope.searchnames = data.names;
+					$scope.searchemails = data.emails;
+				});
+			}
 		}
 
-		
-
-
+		// Notifications
+		$scope.removeNotification = function(id, afterseen){
+			console.log("see profile");
+			// update after user closes profile
+			if (afterseen==true)
+			{
+				$http.get('/notification/'+id).success(function(data){
+					$scope.getPostings();
+				});
+			}	
+		}
 	 }]);
 </script>
 </body>

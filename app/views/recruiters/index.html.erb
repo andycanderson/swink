@@ -1,7 +1,7 @@
 <h1>Recruiter Home</h1>
-  <!-- post '/newposting' => 'postings#create', as: :new_post -->
 
-
+<br>
+<!-- Make a new posting -->
 <h2 ng-model="posting"></h2>
 <!-- hide show on click -->
 <div ng-click="newPosting=!newPosting" 
@@ -22,15 +22,14 @@ ng-init="newPosting=false">Make New Posting</div>
 				{{tag.name}}
 			</div>
 		</div>
-
-
-
 		<input type="submit" id="submit" value="Submit" />
 	</form>
 </div>
+<br>
 
-<h2>!!!!My Postings!!!</h2>
-<div ng-repeat="posting in postings">	
+<!-- Recruiter's Postings -->
+<h2 ng-init="showPosting=false" ng-click="showPosting=!showPosting">!!!!My Postings!!!</h2>
+<div ng-if="showPosting" ng-repeat="posting in postings">	
 	<h2>{{posting.title}}</h2>
 	<p>{{posting.description}}</p>
 	<div>Likes: {{posting.like}}</div>
@@ -39,35 +38,52 @@ ng-init="newPosting=false">Make New Posting</div>
 	<br>
 </div>
 
-
-<h2>Search Applicants By Tags</h2>
+<br>
+<!-- Search for Applicants -->
+<h2 ng-init="searchDiv=false" ng-click="searchDiv=!searchDiv">Search Applicants By Tags</h2>
 <!-- repeat tags -->
-<div ng-repeat="tag in tags">
-	<!-- each tag item/button -->
-	<div ng-click="addTag(tag.name, checkArray(tag.name))" 
-		ng-class="{selected: !checkArray(tag.name)}">
-		{{tag.name}}
+<div ng-if="searchDiv">
+	<div ng-repeat="tag in tags">
+		<!-- each tag item/button -->
+		<div ng-click="addTag(tag.name, checkArray(tag.name))" 
+			ng-class="{selected: !checkArray(tag.name)}">
+			{{tag.name}}
+		</div>
+	</div>
+	<!-- search toggle on tags -->
+	<div ng-click="search(tagArray)">SEARCH</div>
+	<!-- search results -->
+	<h2>Matching Applicants Results</h2>
+	<div ng-repeat="applicant in applicants">
+		Name: {{searchnames[$index]}}
+		<br>
+		Email: {{searchemails[$index]}}
+		<br>
+		Link: {{applicant["link"]}}
+		<br>
+
+</div>
+</div>
+
+<br>
+
+<!-- Notificiations -->
+<h2 ng-init="showNotifications=false"ng-click="showNotifications=!showNotifications">!!Notifications: {{notifications.length}}!!</h2>
+<div ng-if="showNotifications" ng-repeat="n in notifications">
+	{{names[$index]}} liked your post at {{n["created_at"]}}
+	<div ng-init="showP[n.id]=false" ng-click="removeNotification(n.id, showP[n.id]); showP[n.id]=!showP[n.id]" >
+		!!See Profile!!
+	</div>
+	<div ng-if="showP[n.id]">
+		
+		Name: {{names[$index]}}
+		<br>
+		Email: {{emails[$index]}}
+		<br>
+		Links: {{profiles[$index]["link"]}}
+		<br>
+		
 	</div>
 </div>
-<!-- search toggle on tags -->
-<div ng-click="search(tagArray)">SEARCH</div>
-<!-- search results -->
-<h2>Matching Applicants Results</h2>
-<div ng-repeat="applicant in applicants">
-	{{applicant}}
-</div>
-			
-	
-	
 
-<br><br><br>
-
-<h2>notifications</h2>
-<p>Notification Count: <%= begin @notifications.count; rescue; end%></p>
-<%begin @notifications.each do |notification| %>
-<p><%=notification.id%></p>
-<%=link_to notification.profile.applicant.name, removenotification_path(notification), method: :patch%>
-<%end%>
-<%rescue; end%>
-<br><br><br><br>
-<br><br><br>
+<br>

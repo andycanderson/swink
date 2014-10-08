@@ -25,17 +25,26 @@ class ProfileController < ApplicationController
 
   def search
     tags = params[:tags]
-    # params[:search].each do |k , v|
-    #   if v == "1"
-    #     tags << k
-    #   end
-    # end
+    # search profiles for matching tags
     @search_result = Profile.search(tags)
-    
-    render :json => @search_result.to_json
+    @names = []
+    @emails = [];
+    @search_result.each do |profile|
+      @names << profile.applicant.name
+      @emails << profile.applicant.email
+    end
+    @hash = {profiles: @search_result, names: @names, emails: @emails}
+    # return results in json
+    render :json => @hash.to_json
   end
 
   def seeprofile
     @profile = Profile.find(params[:id])
   end
 end
+
+ # params[:search].each do |k , v|
+    #   if v == "1"
+    #     tags << k
+    #   end
+    # end
