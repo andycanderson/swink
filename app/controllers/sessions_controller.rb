@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
   skip_before_action :is_logged_in?
-  
-  def new
-  end
 
   def create
     # errors out because email not found short circuit authentication
@@ -23,6 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    # logout user
     session[:user_id] = nil
     redirect_to root_path
   end

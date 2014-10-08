@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # send user to respective home and make profile if is applicant
   def sendMeHomeAndCreateProfile user 
       if user.type == "Applicant"
         Profile.create(applicant_id: user.id)

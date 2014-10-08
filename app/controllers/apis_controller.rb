@@ -3,6 +3,7 @@ class ApisController < ApplicationController
   respond_to :html, :xml, :json
 
   def index
+    # for apis get all postings and return in json format
     @postings = Posting.all
     respond_with (@postings)
   end

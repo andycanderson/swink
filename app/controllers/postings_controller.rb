@@ -1,11 +1,8 @@
 class PostingsController < ApplicationController
-  def new
-
-  end
+ 
 
   def create    
-
-    # adds tag documents to an array that are found
+    # adds tag documents to an array when they are found in seeded tags
     tags = []
     params[:postingTagArray].each do |tag|        
       tags << Tag.find_by(name: tag)
@@ -23,13 +20,5 @@ class PostingsController < ApplicationController
     end
 
     redirect_to '/newposting'
-  end
-  
-  def edit
-
-  end
-
-  def delete
-
   end
 end
