@@ -8,6 +8,11 @@ group :development, :test do
   gem 'factory_girl', '~> 4.4.0'
 end
 
+gem 'rails_12factor', group: :production
+
+group :production do
+  gem "thin"
+end
 
 # Use postgresql as the database for Active Record
 gem 'pg'
