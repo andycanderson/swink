@@ -6,11 +6,10 @@ class Profile < ActiveRecord::Base
 
 
 
-  # this determines what gets queried
+  # this determines what gets queried by tag names
   def getTagArray
     arr = []
     # downcase and get taglist of self
-
     if self.tag_list 
       tag_list = self.tag_list.downcase
     else
