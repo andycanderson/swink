@@ -18,8 +18,53 @@
 <%= yield %>
 
 <script>
-	angular.module('RecruiterApp', []).controller('recruiterCtrl', ['$scope', '$http', function($scope, $http) {
+	angular.module('RecruiterApp', [])
+	.config(["$httpProvider", function($httpProvider){
+	  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+	}])
+	.controller('recruiterCtrl', ['$scope', '$http', function($scope, $http) {
 		console.log("Angular Ready");
+		$scope.tagArray = [];
+		$scope.addTag = function(tag, addRemove){
+			if (addRemove == true){ 
+				$scope.tagArray.push(tag);
+			}
+			else
+			{
+				var index = $scope.tagArray.indexOf(tag);
+				$scope.tagArray.splice(index, 1);
+			}
+			console.log($scope.tagArray);			
+		}
+
+		$scope.checkArray = function(tagName){
+			// not there
+			if ($scope.tagArray.indexOf(tagName) != -1){
+				return false;
+			}
+			// there
+			else{
+				return true;
+			}
+		}
+
+		// load past jobs
+		$scope.getPostings = function(){
+			$http.get('/recruiter.json').success(function(data){
+				$scope.postings = data.postings;
+				$scope.tags = data.tags;
+			});
+		}
+		$scope.getPostings();
+
+		$scope.search = function(tags){
+			console.log(tags);
+			console.log("searching");
+			$http.post('/searchprofile', {tags: tags}).success(function(data){
+				console.log(data);
+				$scope.applicants = data;
+			});
+		}
 
 		
 

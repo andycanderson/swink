@@ -24,7 +24,7 @@
 
 	.controller('applicantCtrl', ['$scope', '$http', function($scope, $http) {
 		console.log("Angular Ready");
-
+		
 		// when first landing or refreshing
 		$scope.load = function(){$http.get('/applicant.json').success(function(data){
 				$scope.editProfile = false;

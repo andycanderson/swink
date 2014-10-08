@@ -24,16 +24,15 @@ class ProfileController < ApplicationController
 
 
   def search
-      
-    tags = []
-    params[:search].each do |k , v|
-      if v == "1"
-        tags << k
-      end
-    end
+    tags = params[:tags]
+    # params[:search].each do |k , v|
+    #   if v == "1"
+    #     tags << k
+    #   end
+    # end
     @search_result = Profile.search(tags)
-  
-    # this sends you to the search view in profile
+    
+    render :json => @search_result.to_json
   end
 
   def seeprofile
