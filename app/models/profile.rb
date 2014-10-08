@@ -10,7 +10,13 @@ class Profile < ActiveRecord::Base
   def getTagArray
     arr = []
     # downcase and get taglist of self
-    tag_list = self.tag_list.downcase 
+
+    if self.tag_list 
+      tag_list = self.tag_list.downcase
+    else
+      tag_list = ""
+    end
+
     if tag_list.include? "c++"
       arr << "c++"
     end
@@ -49,10 +55,10 @@ class Profile < ActiveRecord::Base
     # gets job created yesterday only
     feed_returned = []
     feed.map do |job|
-      if job.created_at.yday == Time.now.yday
+      # if job.created_at.yday == Time.now.yday
     # if job.created_at.yday == Time.now.yday - 1
         feed_returned << job
-      end
+      # end
     end
 
     # this deletes all postings the user has dis/liked

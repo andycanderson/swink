@@ -7,8 +7,11 @@ class ApplicationController < ActionController::Base
 
   def get_current_user
     # if current user exists
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
+    begin
+      if session[:user_id]
+        @current_user = User.find(session[:user_id])
+      end
+    rescue
     end
   end
 

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="RecruiterApp">
 <head>
-  <title>Practice</title>
+  <title>Swink!</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.min.js"></script>
   <%= csrf_meta_tags %>
+  
 </head>
 
 <body class="recruiters-body" ng-controller="recruiterCtrl">
@@ -16,12 +18,135 @@
 <%= yield %>
 
 <script>
-	angular.module('RecruiterApp', ["templates"]).controller('recruiterCtrl', ['$scope', '$http', function($scope, $http) {
+	angular.module('RecruiterApp', [])
+	.config(["$httpProvider", function($httpProvider){
+	  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+	}])
+	.controller('recruiterCtrl', ['$scope', '$http', function($scope, $http) {
 		console.log("Angular Ready");
 
-		
+		// initialize empty search array
+		$scope.tagArray = [];
 
+		// add or remove tags for search
+		$scope.addTag = function(tag, addRemove){
+			// add tag from array
+			if (addRemove == true){ 
+				$scope.tagArray.push(tag);
+			}
+			// remove tag from array
+			else
+			{
+				var index = $scope.tagArray.indexOf(tag);
+				$scope.tagArray.splice(index, 1);
+			}
+			console.log($scope.tagArray);			
+		}
 
+		// to control toggle of tag buttons
+		$scope.checkArray = function(tagName){
+			// tag in array
+			if ($scope.tagArray.indexOf(tagName) != -1){
+				return false;
+			}
+			// tag not in array
+			else{
+				return true;
+			}
+		}
+
+		// initialize empty postingTagArray
+		$scope.postingTagArray =[];
+
+		// Adding tag to array of postingtags
+		$scope.postingAddTag = function(tag, addRemove){
+			// add tag from array
+			if (addRemove == true){ 
+				$scope.postingTagArray.push(tag);
+			}
+			// remove tag from array
+			else
+			{
+				var index = $scope.postingTagArray.indexOf(tag);
+				$scope.postingTagArray.splice(index, 1);
+			}
+			console.log($scope.postingTagArray);
+		}
+
+		// To control toggle of posting array
+		$scope.checkPostingArray = function(tagName){
+			// tag in posting array
+			if ($scope.postingTagArray.indexOf(tagName) != -1){
+				return false;
+			}
+			// tag not in posting array
+			else{
+				return true;
+			}
+		}
+
+		// Make new posting
+		$scope.makeNewPosting = function(title, description, postingTagArray){
+			console.log("making");
+
+			// exit if no tags are inserted
+			if (postingTagArray.length == 0){
+				return
+			}
+			else{
+				$http.post('/newposting', {title: title, description: description, postingTagArray: postingTagArray}).success(function(data){
+						$scope.newPosting = !$scope.newPosting;
+						$scope.getPostings();
+				});
+			}
+		}
+
+		// Runs when loaded
+		// Load all posted jobs by this recruiter
+		$scope.getPostings = function(){
+			$http.get('/recruiter.json').success(function(data){
+				$scope.postings = data.postings;
+				$scope.tags = data.tags;
+				$scope.notifications = data.notifications;
+				// related data for notifications
+				$scope.names = data.names;
+				$scope.emails = data.emails;
+				$scope.profiles = data.profiles;
+			});
+		}
+		// Get all postings made by recruiter
+		$scope.getPostings();
+
+		// Search for applicants
+		$scope.search = function(tags){
+			console.log(tags.length);
+			console.log("searching");
+			// Skip search if no tags selected
+			if(tags.length == 0){
+				return;
+			}
+			else
+			{
+				$http.post('/searchprofile', {tags: tags}).success(function(data){
+					// get applicant's data
+					$scope.applicants = data.profiles;
+					$scope.searchnames = data.names;
+					$scope.searchemails = data.emails;
+				});
+			}
+		}
+
+		// Notifications
+		$scope.removeNotification = function(id, afterseen){
+			console.log("see profile");
+			// update after user closes profile
+			if (afterseen==true)
+			{
+				$http.get('/notification/'+id).success(function(data){
+					$scope.getPostings();
+				});
+			}	
+		}
 	 }]);
 </script>
 </body>

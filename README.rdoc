@@ -2,13 +2,17 @@
 
 Swink! is a job search and recruiting platform.
 
+Currently:
+Add profile view to search, need to have:
+- name
+- email
+- links
+
+Add angular to notifications
+
+
+
 To do:
-
-* Linkedin logins
-
-* APIs to consume and generate
-
-* Add Angular JS
 
 * Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters.
 
@@ -25,9 +29,7 @@ To do:
 
 
 
-My List of Tasks:
-- dislike/like can only happen once per user per job
-
+Additional:
 For no seeds, feed notifications count, search for tags when no tags are present
 
 

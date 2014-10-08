@@ -3,16 +3,21 @@ class PostingsController < ApplicationController
 
   end
 
-  def create
-    
+  def create    
+
+    # adds tag documents to an array that are found
     tags = []
-    params[:posting].each do |k, v|
-      if k != "title" && k != "description" && v == "1"
-        tags << Tag.find_by(name: k)
-      end
+    params[:postingTagArray].each do |tag|        
+      tags << Tag.find_by(name: tag)
     end
 
-    posting = @current_user.postings.create(params.require(:posting).permit(:title, :description))
+    # make posting belonging to this recruiter
+    posting = @current_user.postings.new
+    posting.title = params[:title]
+    posting.description = params[:description]
+    posting.save
+    
+    # for each tag document, make a posting_tag
     tags.each do |tag|
       posting.posting_tags.create(tag_id: tag.id)
     end
