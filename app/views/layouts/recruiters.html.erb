@@ -24,11 +24,17 @@
 	}])
 	.controller('recruiterCtrl', ['$scope', '$http', function($scope, $http) {
 		console.log("Angular Ready");
+
+		// initialize empty search array
 		$scope.tagArray = [];
+
+		// add or remove tags for search
 		$scope.addTag = function(tag, addRemove){
+			// add tag from array
 			if (addRemove == true){ 
 				$scope.tagArray.push(tag);
 			}
+			// remove tag from array
 			else
 			{
 				var index = $scope.tagArray.indexOf(tag);
@@ -37,15 +43,55 @@
 			console.log($scope.tagArray);			
 		}
 
+		// to control toggle of tag buttons
 		$scope.checkArray = function(tagName){
-			// not there
+			// tag in array
 			if ($scope.tagArray.indexOf(tagName) != -1){
 				return false;
 			}
-			// there
+			// tag not in array
 			else{
 				return true;
 			}
+		}
+
+		// posting tag array
+		$scope.postingTagArray =[];
+
+		// 
+		$scope.postingAddTag = function(tag, addRemove){
+			// add tag from array
+			if (addRemove == true){ 
+				$scope.postingTagArray.push(tag);
+			}
+			// remove tag from array
+			else
+			{
+				var index = $scope.postingTagArray.indexOf(tag);
+				$scope.postingTagArray.splice(index, 1);
+			}
+			console.log($scope.postingTagArray);
+		}
+
+		// to control toggle of posting array
+		$scope.checkPostingArray = function(tagName){
+			// tag in posting array
+			if ($scope.postingTagArray.indexOf(tagName) != -1){
+				return false;
+			}
+			// tag not in posting array
+			else{
+				return true;
+			}
+		}
+
+		// make new posting
+		$scope.makeNewPosting = function(title, description, postingTagArray){
+			console.log("making");
+			$http.post('/newposting', {title: title, description: description, postingTagArray: postingTagArray}).success(function(data){
+					$scope.newPosting = !$scope.newPosting;
+					$scope.getPostings();
+			});
 		}
 
 		// load past jobs
@@ -55,8 +101,10 @@
 				$scope.tags = data.tags;
 			});
 		}
+		// get all postings made by recruiter
 		$scope.getPostings();
 
+		// search function
 		$scope.search = function(tags){
 			console.log(tags);
 			console.log("searching");

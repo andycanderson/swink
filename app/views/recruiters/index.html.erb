@@ -1,10 +1,35 @@
 <h1>Recruiter Home</h1>
+  <!-- post '/newposting' => 'postings#create', as: :new_post -->
 
-<%=link_to "Make a New Job Posting", new_post_path%>
 
-<div>Make New Posting</div>
+<h2 ng-model="posting"></h2>
+<!-- hide show on click -->
+<div ng-click="newPosting=!newPosting" 
+ng-init="newPosting=false">Make New Posting</div>
+<div ng-if="newPosting">
+	<!-- post job -->
+	<form ng-submit="makeNewPosting(title, description, postingTagArray)">
+		<h2>Title and Company</h2>
+		<input type="text" ng-model="title" name="text" />
+		<h2>Description</h2>
+		<textarea type="text" ng-model="description" name="text" /></textarea>
 
-<h2>My Postings</h2>
+		<!-- tags for job postings -->
+		<div ng-repeat="tag in tags">
+			<!-- each tag item/button -->
+			<div ng-click="postingAddTag(tag.name, checkPostingArray(tag.name))" 
+				ng-class="{selected: !checkPostingArray(tag.name)}">
+				{{tag.name}}
+			</div>
+		</div>
+
+
+
+		<input type="submit" id="submit" value="Submit" />
+	</form>
+</div>
+
+<h2>!!!!My Postings!!!</h2>
 <div ng-repeat="posting in postings">	
 	<h2>{{posting.title}}</h2>
 	<p>{{posting.description}}</p>
