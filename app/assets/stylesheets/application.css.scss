@@ -35,6 +35,13 @@ a{
 a:visited{
   color: black;
 }
+.inline-button{
+  display:inline-block;
+  padding:10px 20px;
+  margin:10px;
+  border:1px solid black;
+  border-radius: 2px;
+}
 
 /*Login Home*/
 .login{
@@ -119,11 +126,28 @@ text-align: center;
 /*postings*/
 .newPost{
   border: 1px solid black;
-  margin: 0 auto;
-}
-.centerthis{
-  max-width: 600px;
+  text-align: center;
   margin:0 auto;
+  max-width: 600px;
+}
+.postInner{
+  text-align: left;
+  padding: 0 50px;
+}
+#inputTitle{
+    padding:15px;
+    font-size:1.5em;
+    width: 100%;
+    margin:0 auto;
+}
+#inputDesc{
+  width:100%;
+  font-size:1em;
+  height:200px;
+  padding:20px;
+}
+#submitPost{
+  display:block;
 }
 
 
