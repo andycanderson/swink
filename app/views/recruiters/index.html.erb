@@ -29,8 +29,8 @@
 			<div ng-repeat="posting in postings">	
 				<h2>{{posting.title}}</h2>
 				<p>{{posting.description}}</p>
-				<div>Likes: {{posting.like}}</div>
-				<div>Dislike: {{posting.dislike}}</div>
+				<div class="likestat"><%=image_tag 'like.svg', :class=>"like"%> {{posting.like}}</div>
+				<div class="dislikestat"><%=image_tag 'dislike.svg', :class=>"dislike"%> {{posting.dislike}}</div>
 				<div>{{posting.created_at}}</div>
 				<br>
 			</div>
@@ -50,22 +50,24 @@
 				{{tag.name}}
 			</div>
 		</div>
-		<!-- search toggle on tags -->
+
+		<!-- search button-->
 		<div class="btn" id="searchButton" ng-click="search(tagArray)">Search</div>
 		<!-- search results -->
-
 		
 		<h2 ng-if="applicants!=null">Matching Applicants Results</h2>
+
+		<!-- carousel -->
 		<div id="searchResults" ng-if="applicants!=null">
-			<div ng-repeat="applicant in applicants">
-				Name: {{searchnames[$index]}}
-				<br>
-				Email: {{searchemails[$index]}}
-				<br>
-				Link: {{applicant["link"]}}
-				<br>
-			</div>
+		<!-- display if zero results -->
+		<div ng-if="applicants.length==0">No Results</div>
+				<div ng-repeat="applicant in applicants">
+					<div>Name: {{searchnames[$index]}}</div>
+					<div>Email: {{searchemails[$index]}}</div>
+					<div>Link: {{applicant["link"]}}</div>
+				</div>
 		</div>
+
 	</div>
 </div>
 
