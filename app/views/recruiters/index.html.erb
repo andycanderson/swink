@@ -1,12 +1,6 @@
-<h1>Recruiter Home</h1>
-
-<br>
-<!-- Make a new posting -->
-<h2 ng-model="posting"></h2>
 <!-- hide show on click -->
-<div ng-click="newPosting=!newPosting" 
-ng-init="newPosting=false">Make New Posting</div>
-<div ng-if="newPosting">
+<div ng-if="newPosting" class="newPost">
+	<div class="centerthis">
 	<!-- post job -->
 	<form ng-submit="makeNewPosting(title, description, postingTagArray)">
 		<h2>Title and Company</h2>
@@ -24,23 +18,25 @@ ng-init="newPosting=false">Make New Posting</div>
 		</div>
 		<input type="submit" id="submit" value="Submit" />
 	</form>
+	</div>
 </div>
 <br>
 
 <!-- Recruiter's Postings -->
-<h2 ng-init="showPosting=false" ng-click="showPosting=!showPosting">!!!!My Postings!!!</h2>
-<div ng-if="showPosting" ng-repeat="posting in postings">	
-	<h2>{{posting.title}}</h2>
-	<p>{{posting.description}}</p>
-	<div>Likes: {{posting.like}}</div>
-	<div>Dislike: {{posting.dislike}}</div>
-	<div>{{posting.created_at}}</div>
-	<br>
+<div ng-if="showPosting">
+	<h2>Postings</h2>
+	<div  ng-repeat="posting in postings">	
+		<h2>{{posting.title}}</h2>
+		<p>{{posting.description}}</p>
+		<div>Likes: {{posting.like}}</div>
+		<div>Dislike: {{posting.dislike}}</div>
+		<div>{{posting.created_at}}</div>
+		<br>
+	</div>
 </div>
 
 <br>
 <!-- Search for Applicants -->
-<h2 ng-init="searchDiv=false" ng-click="searchDiv=!searchDiv">Search Applicants By Tags</h2>
 <!-- repeat tags -->
 <div ng-if="searchDiv">
 	<div ng-repeat="tag in tags">
@@ -68,21 +64,23 @@ ng-init="newPosting=false">Make New Posting</div>
 <br>
 
 <!-- Notificiations -->
-<h2 ng-init="showNotifications=false"ng-click="showNotifications=!showNotifications">!!Notifications: <span ng-bind="counter"></span>!!</h2>
-<div ng-if="showNotifications" ng-repeat="n in notifications">
-	{{names[$index]}} liked your post at {{n["created_at"]}}
-	<div ng-init="showP[n.id]=false" ng-click="removeNotification(n.id, showP[n.id]); showP[n.id]=!showP[n.id]" >
-		!!See Profile!!
-	</div>
-	<div ng-if="showP[n.id]">
-		
-		Name: {{names[$index]}}
-		<br>
-		Email: {{emails[$index]}}
-		<br>
-		Links: {{profiles[$index]["link"]}}
-		<br>
-		
+<div ng-if="showNotifications">
+	<h2>Notifications</h2>
+	<div ng-repeat="n in notifications">
+		{{names[$index]}} liked your post at {{n["created_at"]}}
+		<div ng-init="showP[n.id]=false" ng-click="removeNotification(n.id, showP[n.id]); showP[n.id]=!showP[n.id]" >
+			!!See Profile!!
+		</div>
+		<div ng-if="showP[n.id]">
+			
+			Name: {{names[$index]}}
+			<br>
+			Email: {{emails[$index]}}
+			<br>
+			Links: {{profiles[$index]["link"]}}
+			<br>
+			
+		</div>
 	</div>
 </div>
 

@@ -13,49 +13,27 @@
  *= require_tree .
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+
+/*all pages*/
+.selected{
+  color:red;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
+.button{
+  -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   cursor: pointer;
 }
-body {
-  line-height: 1;
+a{
+  text-decoration: none;
 }
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+a:visited{
+  color: black;
 }
 
 /*Login Home*/
@@ -70,8 +48,87 @@ table {
 
 /*Recruiter Home*/
 .recruiters-body{
-
 }
-.selected{
+#recruiter-nav{
+  text-align: center;
+  display:block;
+  background-color: black
+}
+.inline{
+  color:black;
+  display: inline-block;
+  margin: 1em 1em;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+/*nav bar*/
+.inline:hover, #logout:hover{  
+  text-decoration: none;
   color:red;
 }
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: white;
+} 
+button.navbar-toggle.collapsed {
+    background-color: gray;
+}
+span.icon-bar {
+    background: white;
+}
+button.navbar-toggle {
+    background: gray;
+}
+.navbar-header {
+    background-color: gray;
+}
+li.inline.button {
+    border-bottom: 1px solid black;
+}
+.navbar-nav {
+float: none;
+margin: 0;
+width: 100%;
+text-align: center;
+}
+
+@media (min-width: 768px){
+  .navbar-nav > li {
+    float:none;
+    display:inline;
+  }
+  #bs-example-navbar-collapse-1 {
+    margin-top: 20px;
+  }
+
+}
+.lineheight{
+  line-height: 1.1;
+}
+.nav > li > a{
+  display:inline;
+  padding:10px 0;
+  &:hover{
+    border-bottom: 1px solid black;
+    color:red;
+    padding-bottom:0;
+  }
+}
+
+/*postings*/
+.newPost{
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.centerthis{
+  max-width: 600px;
+  margin:0 auto;
+}
+
+
+
+
+
+
+

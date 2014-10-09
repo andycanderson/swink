@@ -17,6 +17,10 @@ group :production do
   gem "thin"
 end
 
+# bootstrap stuff
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
