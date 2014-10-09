@@ -21,6 +21,11 @@
 .selected{
   color:red;
 }
+ul > li.selected
+{
+  color:red;
+  border-bottom:1px solid red;
+}
 .button{
   -moz-user-select: -moz-none;
    -khtml-user-select: none;
@@ -90,7 +95,7 @@ button.navbar-toggle {
 .navbar-header {
     background-color: gray;
 }
-li.inline.button {
+li.button {
     border-bottom: 1px solid black;
 }
 .navbar-nav {
@@ -123,14 +128,14 @@ text-align: center;
   }
 }
 
-/*postings*/
-.newPost{
+/*create postings*/
+.newpostScreen{
   border: 1px solid black;
   text-align: center;
-  margin:0 auto;
+  margin:40px auto;
   max-width: 600px;
 }
-.postInner{
+.newpostInner{
   text-align: left;
   padding: 0 50px;
 }
@@ -139,19 +144,74 @@ text-align: center;
     font-size:1.5em;
     width: 100%;
     margin:0 auto;
+    border:3px solid black;
 }
 #inputDesc{
   width:100%;
   font-size:1em;
   height:200px;
   padding:20px;
+  border:3px solid black;
+
 }
 #submitPost{
   display:block;
+  margin:0 auto;
+  padding: .3em 3em;
+  font-size: 1.5em;
+}
+/*view postings*/
+#postingScreen{
+  max-width: 600px;
+  margin:40px auto;
+  border:1px solid black;
+}
+#postingsContainer{
+  padding:0 4em;
+}
+#allPostings{
+  height:400px;
+  border: solid black 1px;
+  overflow: scroll;
 }
 
+/*search*/
+#searchScreen{
+  max-width: 600px;
+  margin:0 auto;
+  border:1px solid black;
+}
+#searchContainer{
+  padding:0 4em;
+}
+#searchButton{
+  display:block;
+  margin:0 auto;
+  width:50%;
+  padding: .3em 3em;
+  font-size: 1.5em;
+  background-color: gray;
+}
+#searchResults{
+  height:300px;
+  overflow: scroll;
+  border:1px solid black;
+}
 
+/*notifications*/
+#nDiv{
+  max-width: 600px;
+  margin:0 auto;
+  border:1px solid black;
+}
 
+#notificationsContainer{
+  padding:0 4em;
+}
+#notifications{
+  height: 400px;
+  border: 1px solid black;
+}
 
 
 
