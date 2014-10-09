@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 
 
@@ -70,6 +72,20 @@ table {
   border-spacing: 0;
 }
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+/*===============================================================================*/
 
+/*
+@font-face {
+    font-family: input_font;
+    src: url("font/InputSans-ExtraLight.ttf");
+}
+
+html {
+  font-family: input_font;
+}
+*/
+
+.extra {
+  /* color: #00ff00; */
+  color: Yellow;
+}

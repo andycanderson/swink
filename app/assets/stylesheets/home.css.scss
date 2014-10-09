@@ -4,8 +4,14 @@
 
 /* universal */
 
+@font-face {
+    font-family: input_font;
+    src: url("font/InputSans-Light.ttf");
+}
+
 html {
   overflow-y: scroll;
+  font-family: input_font; 
 }
 
 body {
@@ -53,6 +59,11 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+.extra {
+  /* color: #00ff00; */
+  color: Yellow;
 }
 
 /* header */
