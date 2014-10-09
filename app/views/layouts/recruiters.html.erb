@@ -108,12 +108,15 @@
 				$scope.postings = data.postings;
 				$scope.tags = data.tags;
 				$scope.notifications = data.notifications;
+				$scope.counter=$scope.notifications.length;
 				// related data for notifications
 				$scope.names = data.names;
 				$scope.emails = data.emails;
 				$scope.profiles = data.profiles;
 			});
 		}
+
+
 		// Get all postings made by recruiter
 		$scope.getPostings();
 

@@ -38,5 +38,9 @@ class ProfileController < ApplicationController
     # return results in json
     render :json => @hash.to_json
   end
+
+  def seeprofile
+    @profile = Profile.find(params[:id])
+  end
 end
 

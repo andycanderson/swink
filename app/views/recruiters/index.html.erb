@@ -68,7 +68,7 @@ ng-init="newPosting=false">Make New Posting</div>
 <br>
 
 <!-- Notificiations -->
-<h2 ng-init="showNotifications=false"ng-click="showNotifications=!showNotifications">!!Notifications: {{notifications.length}}!!</h2>
+<h2 ng-init="showNotifications=false"ng-click="showNotifications=!showNotifications">!!Notifications: <span ng-bind="counter"></span>!!</h2>
 <div ng-if="showNotifications" ng-repeat="n in notifications">
 	{{names[$index]}} liked your post at {{n["created_at"]}}
 	<div ng-init="showP[n.id]=false" ng-click="removeNotification(n.id, showP[n.id]); showP[n.id]=!showP[n.id]" >

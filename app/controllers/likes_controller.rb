@@ -26,6 +26,7 @@ class LikesController < ApplicationController
     # remove notification when recruiter sees profile
     like = Like.find(params[:id])
     like.update(notify: false)
+
     redirect_to seeprofile_path(like.profile_id)
   end
 end
