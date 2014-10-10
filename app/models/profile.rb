@@ -55,12 +55,14 @@ class Profile < ActiveRecord::Base
 
   def self.search tags
     profiles = []
-    allprofiles = Profile.all()
+    allprofiles = Profile.all
     allprofiles.each do |profile|
-      tags.each do |tag|
-        if profile.tag_list.include? tag.downcase
-          profiles << profile
-        end 
+      if profile.tag_list != nil
+        tags.each do |tag|
+          if profile.tag_list.include? tag
+            profiles << profile
+          end 
+        end
       end
     end
     # return all profiles that match the search tags
