@@ -19,6 +19,13 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand);
 @import url(http://fonts.googleapis.com/css?family=Lato);
 
+@mixin blinking{
+  -webkit-animation: blink 3s infinite; /* Safari 4+ */
+  -moz-animation:    blink 3s infinite; /* Fx 5+ */
+  -o-animation:      blink 3s infinite; /* Opera 12+ */
+  animation:         blink 3s infinite;
+}
+
 /*all pages*/
 .selected{
   color:red;
@@ -49,12 +56,39 @@ a:visited{
   border:1px solid black;
   border-radius: 2px;
 }
+.inline-button.scrolly.selected{
+  border:1px solid red;
+}
+.tag-scroll-container > .inline-button.selected{
+  border:1px solid red;
+}
 .like{
   height:20px;
 }
 .dislike{
   height:20px;
 }
+@-webkit-keyframes blink {
+  0%   { opacity: 1;}
+  50% { opacity: 0;  }
+  100%{ opacity: 1; }
+}
+@-moz-keyframes blink {
+  0%   { opacity: 1; }
+  50% { opacity: 0; }
+  100%{ opacity: 1; }
+}
+@-o-keyframes blink {
+  0%   { opacity: 1; }
+  50% { opacity: 0; }
+  100%{ opacity: 1; }
+}
+@keyframes blink {
+  0%   { opacity: 1; }
+  50% { opacity: 0; }
+  100%{ opacity: 1; }
+}
+
 
 /*Login Home*/
 .login{
@@ -83,6 +117,7 @@ a:visited{
 }
 
 /*nav bar*/
+
 .inline:hover, #logout:hover{  
   text-decoration: none;
   color:red;
@@ -138,12 +173,9 @@ li.button {
 
 /*create postings*/
 .newpostScreen{
-  /*font-family: 'Roboto', sans-serif;*/
   font-family: 'Quicksand', sans-serif;
-  /*font-family: 'Lato', sans-serif;*/
-  border: 1px solid black;
   text-align: center;
-  margin:40px auto;
+  margin:40px auto 0 auto;
   max-width: 600px;
 }
 .newpostInner{
@@ -166,24 +198,39 @@ li.button {
 
 }
 #submitPost{
-  display:block;
-  margin:0 auto;
-  padding: .3em 3em;
+  padding: 7px 50px;
   font-size: 1.5em;
+  border-radius: 2px;
+  top: -142px;  
+  left: 268px;
+  position: relative;
+  box-shadow: 0 0 .5px black;
 }
+.postdown{
+  height:50px;
+  position: relative;
+  left: 67px;
+}
+.tag-scroll-container{
+  max-width: 200px;
+  height:150px;
+  overflow: scroll;
+  margin-top: 10px;
+}
+
 /*view postings*/
 #postingScreen{
   font-family: 'Quicksand', sans-serif;
   max-width: 600px;
-  margin:40px auto;
+  margin:40px auto 0 auto;
   border:1px solid black;
 }
 #postingsContainer{
   padding:0 4em;
 }
 #allPostings{
-  height:400px;
-  border: solid black 1px;
+  height:500px;
+  border-top: solid black 1px;
   overflow: scroll;
 }
 .likestat, .dislikestat{
@@ -196,6 +243,10 @@ img.like{
 .likedislike{
   text-align: center;
 }
+.eachpost{
+  margin-bottom: 40px;
+}
+
 
 /*search*/
 #searchScreen{
@@ -207,12 +258,18 @@ img.like{
 #searchContainer{
   padding:0 4em;
 }
+@media (min-width: 992px)
+{
+  .col-md-4 {
+      margin-top: 30px;
+  }
+}
 .searchButtons{
   display:inline-block;
   text-align: center;
   margin:10px 0;
   padding: 10px 11px 10px 11px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   width: 180px;
   border-radius: 2px;
   background-color: gray;
@@ -221,7 +278,7 @@ img.like{
   margin-left: 0;
   width:180px;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 .tags-container{
   width:200px;
@@ -229,10 +286,58 @@ img.like{
   overflow: scroll;
 }
 #searchResults{
-  height:300px;
-  overflow: scroll;
-  border:1px solid black;
+  height: 380px;
+  width: 420px;
 }
+#search{
+  background-color: rgba(100,130,150,1);
+  box-shadow: 0 0 .5px black;
+}
+#reset{
+  box-shadow: 0 0 .5px black;
+}
+#search:hover, #reset:hover{
+  color:white;
+}
+#placeholder-search, #searchheader{
+  margin-top: 40px;
+}
+.applicant{
+  margin: 70px auto 0;
+  max-width: 80%;
+  padding: 30px;
+}
+.backwards{
+  position: relative;
+}
+.forwards{
+  position:relative;
+}
+.pagenum{
+  text-align: center;
+  position:relative;
+  top:100px;
+}
+.left, .right, .down{
+  position:relative;
+  height:50px;
+}
+.left{
+  top: 166px;
+}
+.right{
+  top: -94px;
+  right: -366px;
+}
+.left:hover, .right:hover{
+  @include blinking;
+}
+.down{
+  position: relative;
+  left: 67px;
+  top: 22px;
+}
+
 
 /*notifications*/
 #nDiv{
@@ -251,6 +356,7 @@ img.like{
 }
 #counter{
   font-weight: 900;
+  color:red;
 }
 
 
