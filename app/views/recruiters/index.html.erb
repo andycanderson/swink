@@ -29,16 +29,16 @@
 			<div ng-repeat="posting in postings">	
 				<h2>{{posting.title}}</h2>
 				<p>{{posting.description}}</p>
-				<div class="likestat"><%=image_tag 'like.svg', :class=>"like"%> {{posting.like}}</div>
-				<div class="dislikestat"><%=image_tag 'dislike.svg', :class=>"dislike"%> {{posting.dislike}}</div>
-				<div>{{posting.created_at}}</div>
-				<br>
+				<div class="likedislike">
+					<div class="likestat"><%=image_tag 'like.svg', :class=>"like"%> {{posting.like}}</div>
+					<div class="dislikestat"><%=image_tag 'dislike.svg', :class=>"dislike"%> {{posting.dislike}}</div>
+					<div>{{posting.created_at}}</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<br>
 <!-- Search for Applicants -->
 <!-- repeat tags -->
 <div ng-if="searchDiv" id="searchScreen">
@@ -60,12 +60,16 @@
 		<!-- carousel -->
 		<div id="searchResults" ng-if="applicants!=null">
 		<!-- display if zero results -->
-		<div ng-if="applicants.length==0">No Results</div>
-				<div ng-repeat="applicant in applicants">
-					<div>Name: {{searchnames[$index]}}</div>
-					<div>Email: {{searchemails[$index]}}</div>
-					<div>Link: {{applicant["link"]}}</div>
-				</div>
+			<div ng-if="applicants.length==0">No Results</div>
+
+			<!--  -->
+			<div ng-if="peep[$index]=true" ng-init="peep[$index]=false" ng-repeat="applicant in applicants">
+				<div>Name: {{searchnames[$index]}}</div>
+				<div>Email: {{searchemails[$index]}}</div>
+				<div>Link: {{applicant["link"]}}</div>
+			</div>
+			<div ng-click="backwards()">Back</div>
+			<div ng-click="forwards()">Fowards</div>
 		</div>
 
 	</div>
@@ -84,14 +88,9 @@
 					!!See Profile!!
 				</div>
 				<div ng-if="showP[n.id]">
-					
-					Name: {{names[$index]}}
-					<br>
-					Email: {{emails[$index]}}
-					<br>
-					Links: {{profiles[$index]["link"]}}
-					<br>
-					
+					<div>Name: {{names[$index]}}</div>
+					<div>Email: {{emails[$index]}}</div>
+					<div>Links: {{profiles[$index]["link"]}}</div>
 				</div>
 			</div>
 		</div>
