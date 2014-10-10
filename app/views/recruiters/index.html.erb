@@ -64,7 +64,7 @@
 					</div>
 				</div>
 			</div>
-			<%=image_tag "down.svg", :class=>"down"%>
+			<div ng-if="searchDiv"><%=image_tag "down.svg", :class=>"down"%></div>
 		</div>
 
 		
@@ -103,26 +103,30 @@
 <!-- Notificiations -->
 <div ng-if="showNotifications" id="nDiv">
 	<div id="notificationsContainer">
-		<h2>Notifications</h2>
+		<h2 id="notTitle">Notifications</h2>
 		<div id="notifications">
 			<div ng-repeat="n in notifications">
 				<div ng-init="ncarousel[$index]=false; ncarousel[0]=true">
 					<div ng-if="ncarousel[$index]">
-						<div ng-click="nbackwards($index)">Back</div>
-						<div ng-click="removeNotification(n.id, showP[n.id])" class="button">Remove Notification</div>
-						
-						<div>{{$index+1}} of {{notifications.length}}</div>
 
-						<div>{{names[$index]}} liked your post at {{n["created_at"]}}</div>
-
-						<div ng-init="showP[n.id]=false" ng-click=" showP[n.id]=!showP[n.id]" class="button">See Profile</div>
-
-						<div ng-if="showP[n.id]">
-							<div>Name: {{names[$index]}}</div>
-							<div>Email: {{emails[$index]}}</div>
-							<div>Links: {{profiles[$index]["link"]}}</div>
+						<div ng-click="removeNotification(n.id, showP[n.id])" class="button inlineB"><%=image_tag "x.svg",:class=>"x-not"%></div>
+						<div class="carouselNav">
+							<div class="button inlineB" ng-click="nbackwards($index)"><%=image_tag "left.svg", :class=>"leftN"%></div>
+							<div class="button inlineB" ng-click="nforwards($index)"><%=image_tag "right.svg",:class=>"rightN"%></div>
 						</div>
-						<div ng-click="nforwards($index)">Fowards</div>
+						<div class="pagenumN">{{$index+1}} of {{notifications.length}}</div>
+						<div ng-init="showP[n.id]=false" ng-click=" showP[n.id]=!showP[n.id]" class="button seeprofile"><span ng-show="!showP[n.id]">Show</span><span ng-show="showP[n.id]">Hide</span>Profile</div>
+
+							
+						<div class="carouselProfile">
+							<div ng-if="!showP[n.id]" class="likedat">{{names[$index]}} liked your post at {{n["created_at"]}}</div>
+						
+							<div ng-if="showP[n.id]" class="profileInfo">
+								<div>Name: {{names[$index]}}</div>
+								<div>Email: {{emails[$index]}}</div>
+								<div>Links: {{profiles[$index]["link"]}}</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

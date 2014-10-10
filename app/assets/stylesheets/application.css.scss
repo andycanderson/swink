@@ -15,15 +15,56 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url(http://fonts.googleapis.com/css?family=Roboto);
 @import url(http://fonts.googleapis.com/css?family=Quicksand);
-@import url(http://fonts.googleapis.com/css?family=Lato);
-
+@import url(http://fonts.googleapis.com/css?family=Quicksand:700);
 @mixin blinking{
   -webkit-animation: blink 3s infinite; /* Safari 4+ */
   -moz-animation:    blink 3s infinite; /* Fx 5+ */
   -o-animation:      blink 3s infinite; /* Opera 12+ */
   animation:         blink 3s infinite;
+}
+@-webkit-keyframes blink {
+  0%   { opacity: 1;}
+  50% { opacity: 0;  }
+  100%{ opacity: 1; }
+}
+@-moz-keyframes blink {
+  0%   { opacity: 1; }
+  50% { opacity: 0; }
+  100%{ opacity: 1; }
+}
+@-o-keyframes blink {
+  0%   { opacity: 1; }
+  50% { opacity: 0; }
+  100%{ opacity: 1; }
+}
+@keyframes blink {
+  0%   { opacity: 1; }
+  50% { opacity: 0; }
+  100%{ opacity: 1; }
+}
+
+@mixin fade{
+  -webkit-animation: fadeIn 1s; /* Safari 4+ */
+  -moz-animation:    fadeIn 1s; /* Fx 5+ */
+  -o-animation:      fadeIn 1s; /* Opera 12+ */
+  animation:         fadeIn 1s;
+}
+@-webkit-keyframes fadeIn {
+  0%   { opacity: 0;}
+  100%{ opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100%{ opacity: 1; }
+}
+@-o-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100%{ opacity: 1; }
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100%{ opacity: 1; }
 }
 
 /*all pages*/
@@ -68,26 +109,7 @@ a:visited{
 .dislike{
   height:20px;
 }
-@-webkit-keyframes blink {
-  0%   { opacity: 1;}
-  50% { opacity: 0;  }
-  100%{ opacity: 1; }
-}
-@-moz-keyframes blink {
-  0%   { opacity: 1; }
-  50% { opacity: 0; }
-  100%{ opacity: 1; }
-}
-@-o-keyframes blink {
-  0%   { opacity: 1; }
-  50% { opacity: 0; }
-  100%{ opacity: 1; }
-}
-@keyframes blink {
-  0%   { opacity: 1; }
-  50% { opacity: 0; }
-  100%{ opacity: 1; }
-}
+
 
 
 /*Login Home*/
@@ -102,6 +124,7 @@ a:visited{
 
 /*Recruiter Home*/
 .recruiters-body{  
+  font-family: 'Quicksand', sans-serif;
 }
 #recruiter-nav{
   text-align: center;
@@ -117,7 +140,9 @@ a:visited{
 }
 
 /*nav bar*/
-
+.navbar{
+  @include fade;
+}
 .inline:hover, #logout:hover{  
   text-decoration: none;
   color:red;
@@ -173,7 +198,7 @@ li.button {
 
 /*create postings*/
 .newpostScreen{
-  font-family: 'Quicksand', sans-serif;
+  @include fade;
   text-align: center;
   margin:40px auto 0 auto;
   max-width: 600px;
@@ -206,6 +231,9 @@ li.button {
   position: relative;
   box-shadow: 0 0 .5px black;
 }
+#submitPost:hover{
+  color:white;
+}
 .postdown{
   height:50px;
   position: relative;
@@ -220,7 +248,7 @@ li.button {
 
 /*view postings*/
 #postingScreen{
-  font-family: 'Quicksand', sans-serif;
+  @include fade;
   max-width: 600px;
   margin:40px auto 0 auto;
   border:1px solid black;
@@ -250,7 +278,7 @@ img.like{
 
 /*search*/
 #searchScreen{
-  font-family: 'Quicksand', sans-serif;
+  @include fade;
   max-width: 800px;
   margin:0 auto;
   /*border:1px solid black;*/
@@ -280,6 +308,9 @@ img.like{
   text-align: center;
   font-size: 1.2em;
 }
+.scrolly:hover{
+  color:red;
+}
 .tags-container{
   width:200px;
   height:300px;
@@ -303,7 +334,8 @@ img.like{
   margin-top: 40px;
 }
 .applicant{
-  margin: 70px auto 0;
+  @include fade;
+  margin: 80px auto 0;
   max-width: 80%;
   padding: 30px;
 }
@@ -316,7 +348,7 @@ img.like{
 .pagenum{
   text-align: center;
   position:relative;
-  top:100px;
+  top:-250px;
 }
 .left, .right, .down{
   position:relative;
@@ -326,8 +358,8 @@ img.like{
   top: 166px;
 }
 .right{
-  top: -94px;
-  right: -366px;
+  top: -104px;
+  right: -392px;
 }
 .left:hover, .right:hover{
   @include blinking;
@@ -341,22 +373,75 @@ img.like{
 
 /*notifications*/
 #nDiv{
-  font-family: 'Quicksand', sans-serif;
+  @include fade;
   max-width: 600px;
-  margin:0 auto;
-  border:1px solid black;
+  margin: 50px auto 0 auto;
+  /*border:1px solid black;*/
 }
-
 #notificationsContainer{
   padding:0 4em;
 }
+#notTitle{
+  text-align: center;
+}
 #notifications{
   height: 400px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 #counter{
-  font-weight: 900;
+  font-weight: 700;
   color:red;
+}
+.x-not{
+  height:40px;
+  left:-23px;
+  
+}
+.carouselNav{
+  position:relative;
+  top:125px;
+}
+.rightN{
+  left:457px;
+}
+.leftN{
+  left: -23px;
+}
+.leftN,.rightN{
+  height:50px;
+}
+.x-not, .leftN, .rightN{
+  position:relative;
+}
+.x-not:hover, .leftN:hover, .rightN:hover{
+  @include blinking;
+}
+.inlineB{
+  display:inline-block;
+}
+.carouselProfile{
+  max-width: 350px;
+  margin: -40px auto 0;
+  overflow: scroll;
+}
+.seeprofile{
+  text-align: center;
+  margin-bottom: 91px;
+  text-decoration: underline;
+}
+.likedat{
+  @include fade;
+  text-align: center;
+  margin-top:18px;
+}
+.profileInfo{
+  @include fade;
+}
+.pagenumN{
+  text-align: center;
+  position: relative;
+  top: -100px;
+  margin-bottom: -20px;
 }
 
 
