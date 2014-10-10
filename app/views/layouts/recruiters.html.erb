@@ -65,6 +65,11 @@ ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
 			console.log($scope.tagArray);			
 		}
 
+		// reset selected
+		$scope.reset = function(){
+			$scope.tagArray=[];
+		}
+
 		// to control toggle of tag buttons
 		$scope.checkArray = function(tagName){
 			// tag in array
@@ -164,15 +169,12 @@ ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
 		}
 
 		// Notifications
-		$scope.removeNotification = function(id, afterseen){
+		$scope.removeNotification = function(id){
 			console.log("see profile");
 			// update after user closes profile
-			if (afterseen==true)
-			{
-				$http.get('/notification/'+id).success(function(data){
+			$http.get('/notification/'+id).success(function(data){
 					$scope.getPostings();
-				});
-			}	
+			});
 		}
 
 		// for toggling through menu (on/off)

@@ -43,34 +43,43 @@
 <!-- repeat tags -->
 <div ng-if="searchDiv" id="searchScreen">
 	<div id="searchContainer">
-		<div class="inline-button" ng-repeat="tag in tags">
-			<!-- each tag item/button -->
-			<div class="button" ng-click="addTag(tag.name, checkArray(tag.name))" 
-				ng-class="{selected: !checkArray(tag.name)}">
-				{{tag.name}}
+
+		<div class="col-md-4">
+			<!-- search button-->
+			<div class="btn searchButtons" ng-click="search(tagArray)">Search</div>
+
+			<div class="btn searchButtons" ng-click="reset()">Reset</div>
+			<div class="tags-container">
+				<div class="inline-button scrolly" ng-repeat="tag in tags">
+					<!-- each tag item/button -->
+					<div class="button" ng-click="addTag(tag.name, checkArray(tag.name))" 
+						ng-class="{selected: !checkArray(tag.name)}">
+						{{tag.name}}
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<!-- search button-->
-		<div class="btn" id="searchButton" ng-click="search(tagArray)">Search</div>
-		<!-- search results -->
 		
-		<h2 ng-if="applicants!=null">Matching Applicants Results</h2>
+		<div class="col-md-8">
+			<!-- search results -->
+			<h2 ng-if="applicants!=null">Matching Applicants Results</h2>
 
-		<!-- carousel -->
-		<div id="searchResults" ng-if="applicants!=null">
-		<!-- display if zero results -->
-			<div ng-if="applicants.length==0">No Results</div>
+			<!-- carousel -->
+			<div id="searchResults">
+			<!-- display if zero results -->
+				<div ng-if="applicants.length==0">No Results</div>
 
-			<div ng-repeat="applicant in applicants" >
-				<div ng-init="carousel[$index]=false; carousel[0]=true">
-					<div ng-if="carousel[$index]">
-						<div ng-click="backwards($index)">Back</div>
-						<div>{{$index+1}} of {{applicants.length}}</div>
-						<div>Name: {{searchnames[$index]}}</div>
-						<div>Email: {{searchemails[$index]}}</div>
-						<div>Link: {{applicant["link"]}}</div>
-						<div ng-click="forwards($index)">Fowards</div>
+				<div ng-repeat="applicant in applicants" >
+					<div ng-init="carousel[$index]=false; carousel[0]=true">
+						<div ng-if="carousel[$index]">
+							<div ng-click="backwards($index)">Back</div>
+							<div>{{$index+1}} of {{applicants.length}}</div>
+							<div>Name: {{searchnames[$index]}}</div>
+							<div>Email: {{searchemails[$index]}}</div>
+							<div>Link: {{applicant["link"]}}</div>
+							<div ng-click="forwards($index)">Fowards</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -89,12 +98,13 @@
 				<div ng-init="ncarousel[$index]=false; ncarousel[0]=true">
 					<div ng-if="ncarousel[$index]">
 						<div ng-click="nbackwards($index)">Back</div>
-
+						<div ng-click="removeNotification(n.id, showP[n.id])" class="button">Remove Notification</div>
+						
 						<div>{{$index+1}} of {{notifications.length}}</div>
 
 						<div>{{names[$index]}} liked your post at {{n["created_at"]}}</div>
 
-						<div ng-init="showP[n.id]=false" ng-click="removeNotification(n.id, showP[n.id]); showP[n.id]=!showP[n.id]" >!!See Profile!!</div>
+						<div ng-init="showP[n.id]=false" ng-click=" showP[n.id]=!showP[n.id]" class="button">See Profile</div>
 
 						<div ng-if="showP[n.id]">
 							<div>Name: {{names[$index]}}</div>
