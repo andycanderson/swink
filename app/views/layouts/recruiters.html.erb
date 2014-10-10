@@ -208,15 +208,71 @@ ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
 				}
 			}
 		}
-
-		$scope.forwards = function(){
-			console.log("f");
+		$scope.carousel=[];
+		$scope.forwards = function(x){
+			console.log("forwards from");
+			console.log(x);
+			// hides all
+			for(person in $scope.carousel){
+				$scope.carousel[person]=false;
+			}
+			// shows next or loops back to first
+			if (x < $scope.applicants.length-1){
+				$scope.carousel[x+1]=true;
+			}
+			else{
+				$scope.carousel[0]=true;
+			}
 		}
 
-		$scope.backwards = function(){
-			console.log("b");
+		$scope.backwards = function(x){
+			console.log("backwards from");
+			console.log(x);
+			// hide all
+			for(person in $scope.carousel){
+				$scope.carousel[person]=false;
+			}
+			// shows previous or loops back to first
+			if (x != 0){
+				$scope.carousel[x-1]=true;
+			}
+			else{
+				$scope.carousel[$scope.applicants.length-1]=true;
+			}
 		}
 
+		$scope.ncarousel=[];
+		$scope.nforwards = function(x){
+			console.log("forwards from");
+			console.log(x);
+			// hides all
+			for(n in $scope.ncarousel){
+				$scope.ncarousel[n]=false;
+			}
+			// shows next or loops back to first
+			if (x < $scope.notifications.length-1){
+				$scope.ncarousel[x+1]=true;
+			}
+			else{
+				$scope.ncarousel[0]=true;
+			}
+		}
+
+		$scope.nbackwards = function(x){
+			console.log("backwards from");
+			console.log(x);
+			// hide all
+			for(n in $scope.ncarousel){
+				$scope.ncarousel[n]=false;
+			}
+			// shows previous or loops back to first
+			if (x != 0){
+				$scope.ncarousel[x-1]=true;
+			}
+			else{
+				$scope.ncarousel[$scope.notifications.length-1]=true;
+			}
+		}
 	 }]);
 </script>
 </body>

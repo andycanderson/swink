@@ -7,11 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Tag.destroy_all
-Tag.create(name: "javascript")
-Tag.create(name: "objective-c")
+Tag.create(name: "angularjs")
+Tag.create(name: "css")
 Tag.create(name: "c++")
+Tag.create(name: "d3.js")
+Tag.create(name: "html")
+Tag.create(name: "javascript")
+Tag.create(name: "jquery")
+Tag.create(name: "mongodb")
+Tag.create(name: "node.js")
+Tag.create(name: "objective-c")
+Tag.create(name: "postgresql")
 Tag.create(name: "ruby on rails")
-Tag.create(name: "angular js")
-Tag.create(name: "node")
-Tag.create(name: "django")
+Tag.create(name: "sass")
+Tag.create(name: "swift")
+
 

@@ -62,16 +62,19 @@
 		<!-- display if zero results -->
 			<div ng-if="applicants.length==0">No Results</div>
 
-			<!--  -->
-			<div ng-if="peep[$index]=true" ng-init="peep[$index]=false" ng-repeat="applicant in applicants">
-				<div>Name: {{searchnames[$index]}}</div>
-				<div>Email: {{searchemails[$index]}}</div>
-				<div>Link: {{applicant["link"]}}</div>
+			<div ng-repeat="applicant in applicants" >
+				<div ng-init="carousel[$index]=false; carousel[0]=true">
+					<div ng-if="carousel[$index]">
+						<div ng-click="backwards($index)">Back</div>
+						<div>{{$index+1}} of {{applicants.length}}</div>
+						<div>Name: {{searchnames[$index]}}</div>
+						<div>Email: {{searchemails[$index]}}</div>
+						<div>Link: {{applicant["link"]}}</div>
+						<div ng-click="forwards($index)">Fowards</div>
+					</div>
+				</div>
 			</div>
-			<div ng-click="backwards()">Back</div>
-			<div ng-click="forwards()">Fowards</div>
 		</div>
-
 	</div>
 </div>
 
@@ -83,17 +86,25 @@
 		<h2>Notifications</h2>
 		<div id="notifications">
 			<div ng-repeat="n in notifications">
-				{{names[$index]}} liked your post at {{n["created_at"]}}
-				<div ng-init="showP[n.id]=false" ng-click="removeNotification(n.id, showP[n.id]); showP[n.id]=!showP[n.id]" >
-					!!See Profile!!
-				</div>
-				<div ng-if="showP[n.id]">
-					<div>Name: {{names[$index]}}</div>
-					<div>Email: {{emails[$index]}}</div>
-					<div>Links: {{profiles[$index]["link"]}}</div>
+				<div ng-init="ncarousel[$index]=false; ncarousel[0]=true">
+					<div ng-if="ncarousel[$index]">
+						<div ng-click="nbackwards($index)">Back</div>
+
+						<div>{{$index+1}} of {{notifications.length}}</div>
+
+						<div>{{names[$index]}} liked your post at {{n["created_at"]}}</div>
+
+						<div ng-init="showP[n.id]=false" ng-click="removeNotification(n.id, showP[n.id]); showP[n.id]=!showP[n.id]" >!!See Profile!!</div>
+
+						<div ng-if="showP[n.id]">
+							<div>Name: {{names[$index]}}</div>
+							<div>Email: {{emails[$index]}}</div>
+							<div>Links: {{profiles[$index]["link"]}}</div>
+						</div>
+						<div ng-click="nforwards($index)">Fowards</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
