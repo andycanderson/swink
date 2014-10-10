@@ -21,7 +21,7 @@ class RecruitersController < ApplicationController
       end
 
       # hash to pass through angular
-      @hash = {postings: @mypostings, notifications: @notifications, tags: Tag.all, names: @n_name, emails: @n_email, profiles: @n_profile}  
+      @hash = {postings: @mypostings.reverse, notifications: @notifications, tags: Tag.all, names: @n_name, emails: @n_email, profiles: @n_profile}  
       respond_with(@hash)
     else
       redirect_to '/applicant'

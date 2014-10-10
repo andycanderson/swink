@@ -8,14 +8,18 @@
 		<h2>Description</h2>
 		<textarea type="text" id="inputDesc" ng-model="description" name="text" /></textarea>
 
-		<!-- tags for job postings -->
-		<div class="inline-button" ng-repeat="tag in tags">
-			<!-- each tag item/button -->
-			<div class="button" ng-click="postingAddTag(tag.name, checkPostingArray(tag.name))" 
-				ng-class="{selected: !checkPostingArray(tag.name)}">
-				{{tag.name}}
+		<div class="tag-scroll-container">
+			<!-- tags for job postings -->
+			<div class="inline-button scrolly" ng-class="{selected: !checkPostingArray(tag.name)}" ng-repeat="tag in tags">
+				<!-- each tag item/button -->
+				<div class="button" ng-click="postingAddTag(tag.name, checkPostingArray(tag.name))" 
+					ng-class="{selected: !checkPostingArray(tag.name)}">
+					{{tag.name}}
+				</div>
 			</div>
 		</div>
+		<%=image_tag "down.svg", :class=>"postdown"%>
+
 		<input id="submitPost" class="btn" type="submit" id="submit" value="Submit" />
 	</form>
 	</div>
@@ -26,13 +30,15 @@
 	<div id="postingsContainer">
 		<h2>My Postings</h2>
 		<div id="allPostings">
-			<div ng-repeat="posting in postings">	
-				<h2>{{posting.title}}</h2>
+			<div ng-repeat="posting in postings">
+				<div class="eachpost">	
+				<h4>{{posting.title}}</h4>
 				<p>{{posting.description}}</p>
 				<div class="likedislike">
 					<div class="likestat"><%=image_tag 'like.svg', :class=>"like"%> {{posting.like}}</div>
 					<div class="dislikestat"><%=image_tag 'dislike.svg', :class=>"dislike"%> {{posting.dislike}}</div>
 					<div>{{posting.created_at}}</div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -46,11 +52,11 @@
 
 		<div class="col-md-4">
 			<!-- search button-->
-			<div class="btn searchButtons" ng-click="search(tagArray)">Search</div>
+			<div class="btn searchButtons" id="search" ng-click="search(tagArray)">Search</div>
 
-			<div class="btn searchButtons" ng-click="reset()">Reset</div>
+			<div class="btn searchButtons" id="reset" ng-click="reset()">Reset</div>
 			<div class="tags-container">
-				<div class="inline-button scrolly" ng-repeat="tag in tags">
+				<div class="inline-button scrolly" ng-class="{selected: !checkArray(tag.name)}" ng-repeat="tag in tags">
 					<!-- each tag item/button -->
 					<div class="button" ng-click="addTag(tag.name, checkArray(tag.name))" 
 						ng-class="{selected: !checkArray(tag.name)}">
@@ -58,12 +64,15 @@
 					</div>
 				</div>
 			</div>
+			<div ng-if="searchDiv"><%=image_tag "down.svg", :class=>"down"%></div>
 		</div>
 
 		
 		<div class="col-md-8">
 			<!-- search results -->
-			<h2 ng-if="applicants!=null">Matching Applicants Results</h2>
+			<h2 ng-if="applicants==null" id="placeholder-search">Start search by selecting tags</h2>
+
+			<h2 ng-if="applicants!=null" id="searchheader">Matching Applicants Results</h2>
 
 			<!-- carousel -->
 			<div id="searchResults">
@@ -73,12 +82,14 @@
 				<div ng-repeat="applicant in applicants" >
 					<div ng-init="carousel[$index]=false; carousel[0]=true">
 						<div ng-if="carousel[$index]">
-							<div ng-click="backwards($index)">Back</div>
-							<div>{{$index+1}} of {{applicants.length}}</div>
-							<div>Name: {{searchnames[$index]}}</div>
-							<div>Email: {{searchemails[$index]}}</div>
-							<div>Link: {{applicant["link"]}}</div>
-							<div ng-click="forwards($index)">Fowards</div>
+							<div class="backwards" ng-click="backwards($index)"><%=image_tag "left.svg", :class=> "left button"%></div>
+							<div class="applicant">
+								<div>Name: {{searchnames[$index]}}</div>
+								<div>Email: {{searchemails[$index]}}</div>
+								<div>Link: {{applicant["link"]}}</div>
+							</div>
+							<div class="pagenum">{{$index+1}} of {{applicants.length}}</div>
+							<div class="forwards" ng-click="forwards($index)"><%=image_tag "right.svg", :class => "right button"%></div>
 						</div>
 					</div>
 				</div>
@@ -92,26 +103,30 @@
 <!-- Notificiations -->
 <div ng-if="showNotifications" id="nDiv">
 	<div id="notificationsContainer">
-		<h2>Notifications</h2>
+		<h2 id="notTitle">Notifications</h2>
 		<div id="notifications">
 			<div ng-repeat="n in notifications">
 				<div ng-init="ncarousel[$index]=false; ncarousel[0]=true">
 					<div ng-if="ncarousel[$index]">
-						<div ng-click="nbackwards($index)">Back</div>
-						<div ng-click="removeNotification(n.id, showP[n.id])" class="button">Remove Notification</div>
-						
-						<div>{{$index+1}} of {{notifications.length}}</div>
 
-						<div>{{names[$index]}} liked your post at {{n["created_at"]}}</div>
-
-						<div ng-init="showP[n.id]=false" ng-click=" showP[n.id]=!showP[n.id]" class="button">See Profile</div>
-
-						<div ng-if="showP[n.id]">
-							<div>Name: {{names[$index]}}</div>
-							<div>Email: {{emails[$index]}}</div>
-							<div>Links: {{profiles[$index]["link"]}}</div>
+						<div ng-click="removeNotification(n.id, showP[n.id])" class="button inlineB"><%=image_tag "x.svg",:class=>"x-not"%></div>
+						<div class="carouselNav">
+							<div class="button inlineB" ng-click="nbackwards($index)"><%=image_tag "left.svg", :class=>"leftN"%></div>
+							<div class="button inlineB" ng-click="nforwards($index)"><%=image_tag "right.svg",:class=>"rightN"%></div>
 						</div>
-						<div ng-click="nforwards($index)">Fowards</div>
+						<div class="pagenumN">{{$index+1}} of {{notifications.length}}</div>
+						<div ng-init="showP[n.id]=false" ng-click=" showP[n.id]=!showP[n.id]" class="button seeprofile"><span ng-show="!showP[n.id]">Show</span><span ng-show="showP[n.id]">Hide</span>Profile</div>
+
+							
+						<div class="carouselProfile">
+							<div ng-if="!showP[n.id]" class="likedat">{{names[$index]}} liked your post at {{n["created_at"]}}</div>
+						
+							<div ng-if="showP[n.id]" class="profileInfo">
+								<div>Name: {{names[$index]}}</div>
+								<div>Email: {{emails[$index]}}</div>
+								<div>Links: {{profiles[$index]["link"]}}</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
