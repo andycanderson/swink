@@ -119,7 +119,21 @@ a:visited{
 
 /*Applicant Home*/
 .applicants-body{
-
+  font-family: 'Quicksand', sans-serif;
+}
+.profile-container {
+  text-align: center;
+  border: 1px solid black;
+  max-width: 600px;
+  margin: auto;
+}
+.applicant-feed {
+  text-align: center;
+  border: 1px solid black;
+  max-width: 600px;
+  margin: auto;
+  overflow: scroll;
+  height: 500px;
 }
 
 /*Recruiter Home*/
