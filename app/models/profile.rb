@@ -16,26 +16,10 @@ class Profile < ActiveRecord::Base
       tag_list = ""
     end
 
-    if tag_list.include? "c++"
-      arr << "c++"
-    end
-    if tag_list.include? "objective-c"
-      arr << "objective-c"
-    end
-    if tag_list.include? "ruby on rails"
-      arr << "ruby on rails"
-    end
-    if tag_list.include? "javascript"
-      arr << "javascript"
-    end
-    if tag_list.include? "angular js"
-      arr << "angular js"
-    end
-    if tag_list.include? "node"
-      arr << "node"
-    end
-    if tag_list.include? "django"
-      arr << "django"
+    Tag.all.each do |tag|
+      if tag_list.include? tag.name
+        arr << tag.name
+      end
     end
     arr
   end
