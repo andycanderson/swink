@@ -1,15 +1,18 @@
 class SessionsController < ApplicationController
   skip_before_action :is_logged_in?
+  
+  def new
+  end
 
   def create
     # errors out because email not found short circuit authentication
     begin
-      user = User.find_by(email: params[:email].downcase)
+      user = User.find_by(email: params[:session][:email].downcase)
     rescue
       user = false
     end
 
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(params[:session][:password])
       # sets user.id to a key in session
       session[:user_id] = user.id.to_s
       # brings user to their home page
@@ -20,7 +23,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # logout user
     session[:user_id] = nil
     redirect_to root_path
   end

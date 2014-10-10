@@ -2,3 +2,100 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* universal */
+
+@font-face {
+    font-family: input_font;
+    src: url("font/InputSans-Light.ttf");
+}
+
+html {
+  font-family: input_font; 
+  background: asset-url('splash_signin_v3.jpg') no-repeat bottom center fixed transparent;
+  background-size: cover;
+height: 100%;
+width: 100%;
+}
+
+.window {
+    
+    /**
+    width: 455px;
+    height: 310px;
+    **/
+
+    width: 500px;
+    height: 450px;
+    
+    background: rgba(255,255,255,.50);
+
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+
+    /* *
+    //background: transparent;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -180px;
+    margin-left: -240px;
+    vertical-align: baseline;
+
+    /*margin-top: 15px;
+    margin-bottom: 20px; 
+    **/
+
+}
+
+#login_form {
+  // vertical-align: baseline;
+    position: relative;
+  top: 50%;
+  transform: translateY(-62%);
+}
+
+#signup_form {
+  margin-top: 25px;
+}
+
+#title {
+  font-size: 50px;
+  text-align: center;
+  height: 59px;
+  width: 375px;
+  display: block;
+  margin: 25px auto;
+  // margin-top: 0px;
+  margin-bottom: 25px;
+}
+
+#logo {
+  height: 59px;
+  width: 375px;
+  display: block;
+  margin: 25px auto;
+  // margin-top: 0px;
+  margin-bottom: 25px;
+}
+
+#login_button,
+#sign_up_button {
+  display: block;
+  margin: 0 auto;
+  width: 175px;
+  margin-top: 15px;
+}
+
+
+
+
+
+
+
+
