@@ -9,12 +9,12 @@
     src: url("font/InputSans-Light.ttf");
 }
 
-html {
+.login {
   font-family: input_font; 
   background: asset-url('splash_signin_v3.jpg') no-repeat bottom center fixed transparent;
   background-size: cover;
-height: 100%;
-width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .window {

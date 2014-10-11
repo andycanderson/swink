@@ -7,9 +7,16 @@ class ApplicantsController < ApplicationController
       # gets profile
       myprofile = @current_user.profile
       # gets tags to query postings for
-      @tags = myprofile.getTagArray.sort
+      # see if user has no tags
+      if myprofile.getTagArray != ""
+        @tags = myprofile.getTagArray.sort
+        @feed = myprofile.getFeed(@tags)
+      else
+        @tags = ""
+        @feed = ""
+      end
       # gets postings for tags
-      @feed = myprofile.getFeed(@tags)
+      
       @liked = myprofile.getLiked
       @name = @current_user.name.downcase.split.map(&:capitalize).join(' ')
       @email = @current_user.email.downcase
