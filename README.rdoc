@@ -1,42 +1,9 @@
 =Swink!
 
-Swink! is a job search and recruiting platform.
+Swink! is a job search and recruiting platform focused on ease of use and networking for job seekers and recruiters. 
+Technologies Used: AngularJS, Ruby on Rails, Javascript, Postgresql.
 
-Currently:
-Add profile view to search, need to have:
-- name
-- email
-- links
-
-Add angular to notifications
-
-
-
-To do:
-
-* Features: accordian of applicants, search bar for recruiters, edit pages for applicants and recruiters.
-
-* recruiter has_many :postings
-* posting belongs_to recruiter
-* posting has_many :tags
-* applicant has many postings
-* posting belongs to many applicants through tags
-* tag belongs_to :posting
-* tag belongs_to :profile
-* profile has_many :postings, through: :tags
-* posting belongs_to :applicant
-* applicant has_one :profile
-
-
-
-Additional:
-For no seeds, feed notifications count, search for tags when no tags are present
-
-
-Recruiter side 
-- fix routing for posting jobs
-- notifications for liked jobs
-- maybe applicants that have liked recruiter's posting get added to string that for recruiter's
+API in json for all job postings available at: "swink.herokuapp.com/api" 
 
 
 
