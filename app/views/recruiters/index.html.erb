@@ -105,6 +105,7 @@
 	<div id="notificationsContainer">
 		<h2 id="notTitle">Notifications</h2>
 		<div id="notifications">
+			<h4 class="center" ng-if="counter==0">-No Notifications Yet-</h4>
 			<div ng-repeat="n in notifications">
 				<div ng-init="ncarousel[$index]=false; ncarousel[0]=true">
 					<div ng-if="ncarousel[$index]">
@@ -122,9 +123,10 @@
 							<div ng-if="!showP[n.id]" class="likedat">{{names[$index]}} liked your post at {{n["created_at"]}}</div>
 						
 							<div ng-if="showP[n.id]" class="profileInfo">
-								<div>Name: {{names[$index]}}</div>
-								<div>Email: {{emails[$index]}}</div>
-								<div>Links: {{profiles[$index]["link"]}}</div>
+								<div>{{names[$index]}}</div>
+								<div>{{emails[$index]}}</div>
+								<div>Links:<div ng-repeat="link in linksA[$index]">{{link}}</div></div>
+								<div>Tags:<div ng-repeat="tag in taglistsA[$index]">{{tag}}</div></div>
 							</div>
 						</div>
 					</div>

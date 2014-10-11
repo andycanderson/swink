@@ -4,16 +4,16 @@ class ProfileController < ApplicationController
   def showmine
     # gets this when EDIT PROFILE is clicked
     @profile = Profile.find_by(applicant_id: @current_user)
+    # tag list is string
     @tag_list = @profile.tag_list
     @link = @profile.link
-    # @hashy = {profile: @profile}
     respond_with(@profile)
   end
 
   def update
     # update profile when user patches
     @current_user.profile.link = params[:link]
-    @current_user.profile.tag_list = params[:tag_list]
+    @current_user.profile.tag_list = params[:tag_list].join(" ")
     @current_user.profile.save
 
     # rewrites header to resolve 500 error
@@ -43,4 +43,3 @@ class ProfileController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 end
-
