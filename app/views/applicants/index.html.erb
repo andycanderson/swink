@@ -1,9 +1,9 @@
 <!-- <h1>Applicant Home</h1> -->
 
 <br>
-<div class="profile-container">
+<div class="profile-container" ng-if="editProfile">
 	<div ng-click="getProfileInfo()" 
-	ng-init="editProfile=false">CLICK TO EDIT PROFILE</div>
+	ng-if="editProfile" ng-init="editProfile=false"></div>
 	<h2 ng-model="profile"></h2>
 	<div ng-if="editProfile">
 

@@ -26,11 +26,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="inline button" ng-click="getProfileInfo()"
-ng-init="editProfile=false">Edit Profile</li>
-         <li class="inline button" ng-init="searchDiv=false" ng-click="toggle(searchDiv, 's')" ng-class="{selected: searchDiv}">Search Jobs</li>
+        <li class="inline button" ng-click="toggle(getProfileInfo(), 'n')"
+ng-init="editProfile=false" ng-class="{selected: editProfile}">Edit Profile</li>
+         <li class="inline button" ng-init="searchDiv=false" ng-click="toggle(searchDiv, 's')" ng-class="{selected: searchDiv}">Liked Jobs</li>
          <li class="inline button"  ng-init="showPosting=true" ng-click="toggle(showPosting, 'p')", ng-class="{selected: showPosting}">My Job List</li>
-         <li class="inline button" ng-init="showNotifications=false" ng-click="toggle(showNotifications, 'not')" ng-class="{selected: showNotifications}">Notifications<span ng-if="counter" id="counter" ng-bind="counter">{{counter}}</span></li>
          <li class="inline button lineheight"><a href="/signout"><%= link_to "Log Out", sign_out_path, method: :delete%></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -98,6 +97,40 @@ ng-init="editProfile=false">Edit Profile</li>
 			$http.get('/dislike/'+id).success(function(data){
 				$scope.load();
 			});
+		}
+
+		// for toggling through menu (on/off)
+		$scope.toggle = function(x, y){
+			if(x==false){
+				if(y=="n")
+				{	
+					$scope.editProfile=true;
+					$scope.showPosting=false;
+					$scope.searchDiv=false;
+					$scope.showNotifications=false;
+				}
+				else if(y=="p")
+				{
+					$scope.editProfile=false;
+					$scope.showPosting=true;
+					$scope.searchDiv=false;
+					$scope.showNotifications=false;
+				}
+				else if(y=="s")
+				{
+					$scope.editProfile=false;
+					$scope.showPosting=false;
+					$scope.searchDiv=true;
+					$scope.showNotifications=false;
+				}
+				else if(y=="not")
+				{
+					$scope.editProfile=false;
+					$scope.showPosting=false;
+					$scope.searchDiv=false;
+					$scope.showNotifications=true;
+				}
+			}
 		}
 
 	 }]);
