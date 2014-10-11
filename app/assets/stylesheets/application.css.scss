@@ -235,9 +235,20 @@ li.button {
   left: 268px;
   position: relative;
   box-shadow: 0 0 .5px black;
+  background-color: rgba(103,141,138,1);
 }
-#submitPost:hover{
+#submitPost:hover, #resetPost:hover{
   color:white;
+}
+#resetPost{
+  font-size: 1.5em;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 0 .5px black;
+  padding: 7px 59px;
+  top: -84px;
+  left: 87px;
+  background-color: silver;
 }
 .postdown{
   height:50px;
@@ -279,6 +290,17 @@ img.like{
 .eachpost{
   margin-bottom: 40px;
 }
+.hightlightgreen{
+  color:green;
+  font-size: 3em;
+}
+.hightlightred{
+  color:red;
+}
+.up{
+  margin-top: -10px;
+}
+
 
 
 /*search*/
@@ -305,8 +327,9 @@ img.like{
   font-size: 1.2em;
   width: 180px;
   border-radius: 2px;
-  background-color: gray;
+  background-color: silver;
 }
+
 .inline-button.scrolly{
   margin-left: 0;
   width:180px;
@@ -326,7 +349,7 @@ img.like{
   width: 420px;
 }
 #search{
-  background-color: rgba(100,130,150,1);
+  background-color: rgba(103,141,138,1);
   box-shadow: 0 0 .5px black;
 }
 #reset{
@@ -340,31 +363,21 @@ img.like{
 }
 .applicant{
   @include fade;
-  margin: 80px auto 0;
+  margin: 44px auto 0;
   max-width: 80%;
   padding: 30px;
-}
-.backwards{
-  position: relative;
-}
-.forwards{
-  position:relative;
 }
 .pagenum{
   text-align: center;
   position:relative;
-  top:-250px;
+  /*top:-250px;*/
 }
 .left, .right, .down{
   position:relative;
   height:50px;
 }
-.left{
-  top: 166px;
-}
 .right{
-  top: -104px;
-  right: -392px;
+  left: 377px;
 }
 .left:hover, .right:hover{
   @include blinking;
@@ -373,6 +386,11 @@ img.like{
   position: relative;
   left: 67px;
   top: 22px;
+}
+.carouselNavSearch{
+  top: 140px;
+  position: relative;
+
 }
 
 
@@ -528,7 +546,7 @@ img.like{
 
 @font-face {
     font-family: input_font;
-    src: url("font/InputSans-ExtraLight.ttf");
+    src: url("/font/InputSans-ExtraLight.ttf");
 }
 
 html {

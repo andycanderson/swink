@@ -68,6 +68,7 @@ ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
 		// reset selected
 		$scope.reset = function(){
 			$scope.tagArray=[];
+			$scope.postingTagArray =[];
 		}
 
 		// to control toggle of tag buttons
@@ -125,6 +126,7 @@ ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
 						$scope.newPosting = !$scope.newPosting;
 						$scope.getPostings();
 						$scope.toggle(false,"p");
+						$scope.reset();
 				});
 			}
 		}

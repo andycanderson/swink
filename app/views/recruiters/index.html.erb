@@ -4,15 +4,15 @@
 	<!-- post job -->
 	<form ng-submit="makeNewPosting(title, description, postingTagArray)">
 		<h2>Job Title</h2>
-		<input type="text" id="inputTitle" ng-model="title" name="text" />
+		<input placeholder="Enter job title" type="text" id="inputTitle" ng-model="title" name="text" />
 		<h2>Description</h2>
-		<textarea type="text" id="inputDesc" ng-model="description" name="text" /></textarea>
+		<textarea  placeholder="Enter job description"  type="text" id="inputDesc" ng-model="description" name="text" /></textarea>
 
 		<div class="tag-scroll-container">
 			<!-- tags for job postings -->
-			<div class="inline-button scrolly" ng-class="{selected: !checkPostingArray(tag.name)}" ng-repeat="tag in tags">
+			<div class="inline-button scrolly button" ng-class="{selected: !checkPostingArray(tag.name)}" ng-repeat="tag in tags" ng-click="postingAddTag(tag.name, checkPostingArray(tag.name))" >
 				<!-- each tag item/button -->
-				<div class="button" ng-click="postingAddTag(tag.name, checkPostingArray(tag.name))" 
+				<div class="button"
 					ng-class="{selected: !checkPostingArray(tag.name)}">
 					{{tag.name}}
 				</div>
@@ -21,6 +21,7 @@
 		<%=image_tag "down.svg", :class=>"postdown"%>
 
 		<input id="submitPost" class="btn" type="submit" id="submit" value="Submit" />
+		<div id="resetPost" class="btn" ng-click="reset()"/>Reset</div>
 	</form>
 	</div>
 </div>
@@ -33,10 +34,10 @@
 			<div ng-repeat="posting in postings">
 				<div class="eachpost">	
 				<h4>{{posting.title}}</h4>
-				<p>{{posting.description}}</p>
+				<p class="up">{{posting.description}}</p>
 				<div class="likedislike">
-					<div class="likestat"><%=image_tag 'like.svg', :class=>"like"%> {{posting.like}}</div>
-					<div class="dislikestat"><%=image_tag 'dislike.svg', :class=>"dislike"%> {{posting.dislike}}</div>
+					<div class="likestat"><%=image_tag 'like.svg', :class=>"like"%><span ng-bind="posting.like"></span></div>
+					<div class="dislikestat"><%=image_tag 'dislike.svg', :class=>"dislike"%><span  ng-bind="posting.dislike"></span></div>
 					<div>{{posting.created_at}}</div>
 				</div>
 				</div>
@@ -56,9 +57,9 @@
 
 			<div class="btn searchButtons" id="reset" ng-click="reset()">Reset</div>
 			<div class="tags-container">
-				<div class="inline-button scrolly" ng-class="{selected: !checkArray(tag.name)}" ng-repeat="tag in tags">
+				<div class="inline-button scrolly button" ng-class="{selected: !checkArray(tag.name)}" ng-repeat="tag in tags" ng-click="addTag(tag.name, checkArray(tag.name))">
 					<!-- each tag item/button -->
-					<div class="button" ng-click="addTag(tag.name, checkArray(tag.name))" 
+					<div class="button"  
 						ng-class="{selected: !checkArray(tag.name)}">
 						{{tag.name}}
 					</div>
@@ -81,17 +82,24 @@
 
 				<div ng-repeat="applicant in applicants" >
 					<div ng-init="carousel[$index]=false; carousel[0]=true">
+
 						<div ng-if="carousel[$index]">
-							<div class="backwards" ng-click="backwards($index)"><%=image_tag "left.svg", :class=> "left button"%></div>
+							<div class="pagenum">{{$index+1}} of {{applicants.length}}</div>
+							<div class="carouselNavSearch">
+								<div class="inlineB" ng-click="backwards($index)"><%=image_tag "left.svg", :class=> "left button"%></div>
+								<div class="inlineB" ng-click="forwards($index)"><%=image_tag "right.svg", :class => "right button"%></div>
+							</div>
+
 							<div class="applicant">
 								<div>Name: {{searchnames[$index]}}</div>
 								<div>Email: {{searchemails[$index]}}</div>
 								<div>Link: {{applicant["link"]}}</div>
 							</div>
-							<div class="pagenum">{{$index+1}} of {{applicants.length}}</div>
-							<div class="forwards" ng-click="forwards($index)"><%=image_tag "right.svg", :class => "right button"%></div>
+							
+							
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
