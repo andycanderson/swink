@@ -8,20 +8,12 @@ class Profile < ActiveRecord::Base
 
   # this determines what gets queried by tag names
   def getTagArray
-    arr = []
-    # downcase and get taglist of self
+    # downcase and get taglist array of self
     if self.tag_list 
-      tag_list = self.tag_list.downcase
+      tag_list = self.tag_list.downcase.split(" ")
     else
       tag_list = ""
     end
-
-    Tag.all.each do |tag|
-      if tag_list.include? tag.name
-        arr << tag.name
-      end
-    end
-    arr
   end
 
   def getFeed tags

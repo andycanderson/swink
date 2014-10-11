@@ -1,44 +1,78 @@
-<h1>Applicant Home</h1>
 
-<br>
-<div ng-click="getProfileInfo()" 
-ng-init="editProfile=false">CLICK TO EDIT PROFILE</div>
-<h2 ng-model="profile"></h2>
-<div ng-if="editProfile">
 
-	<!-- patch to /myprofile -->
-	<form ng-submit="saveProfile(link, tag_list)">
-		<h2>Link</h2>
-		<input type="text" ng-model="link" name="text" />
-		<h2>Tag List</h2>
-		<textarea type="text" ng-model="tag_list" name="text" /></textarea>
-		<input type="submit" id="submit" value="Submit" />
-	</form>
+<!-- MAKE VIEWS -->
+<!-- STYLE VIEWS -->
+
+
+<div ng-if="seeProfile">
+	<div class="profile-container">
+		<div class="col-md-6">
+			<!-- patch to /myprofile -->
+			<div class="form-container">
+
+					<h2>Links About You</h2>
+					<textarea id="linkinput" type="text" ng-model="link" name="text"/></textarea>
+					<h2 id="taglist">Tag List</h2>
+					<%=image_tag "down.svg", :id=>"downarrow"%>
+
+					<div class="all-tags-container">
+						<div class="inline-button scrolly" ng-class="{selected: !checkArray(tag)}" ng-repeat="tag in alltags">
+							<!-- each tag item/button -->
+							<div class="button" ng-click="addTag(tag, checkArray(tag))" 
+								ng-class="{selected: !checkArray(tag)}">
+								{{tag}}
+							</div>
+						</div>
+					</div>
+					<div class="btn searchButtons hoverButton" ng-click="saveProfile(link, tagArray)">Save</div>
+
+					
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="profilePreview">
+				<h2 id="previewtitle">Preview</h2>
+				<div id="userProfile">
+					<div>Name: {{name}}</div>
+					<div>Email: {{email}}</div>
+					<div>Links: {{link}}</div>
+					<div>
+						<div>Tags</div>
+						<div ng-repeat="tag in tagArray">{{tag}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<br><br>
 
 
-<h2>Based on These Tags: </h2>
-<div ng-repeat="tag in tags">{{tag}}</div>
-<br>
-<h2>Feed:</h2>
-<div ng-repeat="job in feed">
-	<br>
-	<h2>{{job.title}}</h2>
-	<p>{{job.description}}</p>
-	<div ng-click="like(job.id)">Like</div>
-	<div ng-click="dislike(job.id)">Dislike</div>
-	<p>{{job.created_at}}</p>
-
+<div ng-if="seeFeed" class="container">
+	<h2 id="feedTitle">Jobs Feed:</h2>
+	<h4 ng-if="counter==0 || feed==null">Start By Adding Tags In Your Profile</h4>
+	<div class="feedcontainer">
+		<div ng-repeat="job in feed" class="singlejob">
+			
+			<h3 class="jobTitle">{{job.title}}</h3>
+			<div>Description: {{job.description}}</div>
+			<div>Posted: {{job.created_at}}</div>
+			<div class="inlineB likebutton button" ng-click="like(job.id)"><%=image_tag "like.svg", :class=>"like" %></div>
+			<div class="inlineB button" ng-click="dislike(job.id)"><%=image_tag "dislike.svg", :class=>"dislike" %></div>
+		</div>
+	</div>
 </div>
 
-<br>
 
-<h2>Liked Jobs: </h2>
-<div ng-repeat="job in liked">
-	<h2>{{job.title}}</h2>
-	<p>{{job.description}}</p>
-	<br>
+<div ng-if="seeLikedJobs" class="container">
+	<h2 id="likedTitle">Liked Jobs: </h2>
+	<div class="feedcontainer" class="singlejob">
+	<div ng-repeat="job in liked">
+		<h3 class="jobTitle">{{job.title}}</h3>
+		<div>Description: {{job.description}}</div>
+		<div>Liked at: {{liked[$index].created_at}}</div>
+		<br>
+	</div>
+	</div>
 </div>
-

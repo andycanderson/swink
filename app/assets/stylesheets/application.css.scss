@@ -68,6 +68,9 @@
 }
 
 /*all pages*/
+.center{
+  text-align: center;
+}
 .selected{
   color:red;
 }
@@ -109,6 +112,9 @@ a:visited{
 .dislike{
   height:20px;
 }
+#keepdark{
+  color:black;
+}
 
 
 
@@ -117,10 +123,7 @@ a:visited{
   
 }
 
-/*Applicant Home*/
-.applicants-body{
 
-}
 
 /*Recruiter Home*/
 .recruiters-body{  
@@ -421,11 +424,11 @@ img.like{
 }
 .carouselProfile{
   max-width: 350px;
-  margin: -40px auto 0;
-  overflow: scroll;
+  margin: -50px auto 0;
 }
 .seeprofile{
   text-align: center;
+  margin-top: -60px;
   margin-bottom: 91px;
   text-decoration: underline;
 }
@@ -433,9 +436,12 @@ img.like{
   @include fade;
   text-align: center;
   margin-top:18px;
+  padding-top: 60px;
 }
 .profileInfo{
   @include fade;
+  overflow: scroll;
+  height:200px;
 }
 .pagenumN{
   text-align: center;
@@ -444,7 +450,73 @@ img.like{
   margin-bottom: -20px;
 }
 
+/*Applicant Home*/
+.applicants-body{
+  font-family: 'Quicksand', sans-serif;
 
+}
+.profile-container{
+  max-width: 1000px;
+  margin: 0 auto;
+  @include fade;
+}
+.form-container{
+  text-align: center;
+  max-width: 400px;
+}
+.profilePreview {
+    margin-bottom: -180px;
+    margin-top: 20px;
+    padding: 0 100px 150px 100px;
+    border:1px solid black;
+}
+.all-tags-container{
+  height:200px;
+  overflow: scroll;
+  margin-left: 12px;
+}
+#downarrow{
+  height:50px;
+  margin: -40px 0 -30px;
+}
+#linkinput{
+  height: 150px;
+  width: 374px;
+  border:1px solid black;
+}
+#userProfile{
+  height:250px;
+  overflow: scroll;
+  margin-top: 80px;
+}
+#previewtitle{
+  text-align: center;
+}
+.hoverButton{
+  color:white;
+}
 
-
-
+/*Feed and Liked*/
+.feedcontainer{
+  /*padding:0 200px;*/
+  height:500px;
+  overflow: scroll;
+  @include fade;
+}
+@media (min-width: 1200px){
+  .container {
+      width: 800px;
+  }
+}
+#feedTitle, #likedTitle{
+  border-bottom: 1px solid black;
+}
+.inlineB.likebutton{
+  vertical-align: -5.9px;
+}
+.singlejob{
+  margin: 0 0 70px;
+}
+.jobTitle{
+  margin-bottom: -3px;
+}

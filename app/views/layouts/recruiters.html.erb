@@ -30,8 +30,8 @@
 ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
          <li class="inline button" ng-init="searchDiv=false" ng-click="toggle(searchDiv, 's')" ng-class="{selected: searchDiv}">Search Applicants</li>
          <li class="inline button"  ng-init="showPosting=true" ng-click="toggle(showPosting, 'p')", ng-class="{selected: showPosting}">My Postings</li>
-         <li class="inline button" ng-init="showNotifications=false" ng-click="toggle(showNotifications, 'not')" ng-class="{selected: showNotifications}">Notifications<span ng-if="counter" id="counter" ng-bind="counter">{{counter}}</span></li>
-         <li class="inline button lineheight"><a href="/signout"><%= link_to "Log Out", sign_out_path, method: :delete%></a></li>
+         <li class="inline button" ng-init="showNotifications=false" ng-click="toggle(showNotifications, 'not'); getPostings()" ng-class="{selected: showNotifications}">Notifications<span ng-if="counter" id="counter">({{counter}})</span></li>
+         <li class="inline button lineheight"><a href="/signout"><%= link_to "Log Out", sign_out_path, method: :delete, :id=>"keepdark"%></a></li>
       </ul>
       </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -142,7 +142,9 @@ ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
 				// related data for notifications
 				$scope.names = data.names;
 				$scope.emails = data.emails;
-				$scope.profiles = data.profiles;
+				$scope.profilesA = data.profiles;
+				$scope.taglistsA = data.taglists;
+				$scope.linksA = data.linkarray;
 			});
 		}
 
