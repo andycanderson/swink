@@ -22,7 +22,12 @@ class RecruitersController < ApplicationController
           @n_email << n.profile.applicant.email
           @n_profile << n.profile
           # split by new lines, space and commas
-          @links << n.profile.link.split(/[,\s]+/)
+
+          if n.profile.link!=nil
+            @links << n.profile.link.split(/[,\s]+/)
+          else
+            @links << ""
+          end
           @taglists << n.profile.tag_list.split(" ")
         end
       end
