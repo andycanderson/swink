@@ -53,7 +53,7 @@
 			<div class="positionR" ng-init="slide[$index]=false" ng-class="{slideOffScreen: slide[$index]}">
 			<div class="feedlikedislike">
 				<div class="inlineB likebutton button" ng-click="like(job.id); slide[$index]=true"><%=image_tag "like.svg", :class=>"like" %></div>
-				<div class="inlineB button" ng-click="dislike(job.id)"><%=image_tag "dislike.svg", :class=>"dislike dislikePosition" %></div>
+				<div class="inlineB button" ng-click="dislike(job.id); slide[$index]=true"><%=image_tag "dislike.svg", :class=>"dislike dislikePosition" %></div>
 			</div>
 			<h3 class="jobTitle">{{job.title}}</h3>
 			<div>Description: {{job.description}}</div>

@@ -83,8 +83,10 @@
 			});
 		}
 
+		// like and dislike functions to create rows
 		$scope.like = function(id){
 			$scope.id = id;
+			// gives time for sliding animation
 			$timeout(function () {
 				console.log(id);
 	            $http.get('/like/'+$scope.id).success(function(data){
@@ -94,17 +96,19 @@
 
 			
 		}
-
 		$scope.dislike = function(id){
-
-			$http.get('/dislike/'+id).success(function(data){
-				$scope.load();
-			});
+			$scope.id = id;
+			// gives time for sliding animation
+			$timeout(function () {
+	            $http.get('/dislike/'+id).success(function(data){
+	            	$scope.load();
+	            });
+			}, 100);
 		}
 
 
 
-		// ADD STUFF TO THIS!!!!!
+		// toggle menu
 		$scope.toggle = function(x,y){
 			if(x==false){
 				if(y=="f")
