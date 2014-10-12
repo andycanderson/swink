@@ -67,29 +67,41 @@
   100%{ opacity: 1; }
 }
 
-@mixin slider{
-  webkit-animation: slide .3s;
-  -moz-animation: slide .3s;   
-  -o-animation: slide .3s;     
-  animation: slide .3s;   
-}
-@-webkit-keyframes slide {
-    0%{left:0;}
-    100% { left: -1500px;}
-}
-@-moz-keyframes slide{
-    0%{left:0;}
-    100% { left: -1500px;}
-}
-@-o-keyframes slide{
-    0%{left:0;}
-    100% { left: -1500px;}
-}
-@keyframes slide {
-    0%{left:0;}
-    100% { left: -1500px;  }
+nav {
+  background-color: rgba(255, 255, 255, .98);
 }
 
+/* recruiter */
+body.recruiters-body {
+  background: asset-url("recruiter.jpg") no-repeat bottom center fixed transparent;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+div#postingScreen {
+  background-color: rgba(255, 255, 255, .98);
+}
+div#notificationsContainer,
+div.newpostScreen,
+div.tags-container,
+div.search-results {
+  background-color: rgba(255, 255, 255, .98);
+  border: 1px solid black;
+}
+
+/* applicant */
+body.applicants-body {
+  background: asset-url('applicant.jpg') no-repeat bottom center fixed transparent;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+div.container,
+div.form-container,
+div.profilePreview {
+  background-color: rgba(255, 255, 255, .98);
+  border: 1px solid black;
+}
 
 /*all pages*/
 .bold{
@@ -593,6 +605,28 @@ img.like{
 }
 .totals{
 
+}
+@mixin slider{
+  webkit-animation: slide .3s;
+  -moz-animation: slide .3s;   
+  -o-animation: slide .3s;     
+  animation: slide .3s;   
+}
+@-webkit-keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-moz-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-o-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;  }
 }
 
 

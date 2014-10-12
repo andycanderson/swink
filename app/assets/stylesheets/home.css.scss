@@ -3,15 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* universal */
-
+/*
 @font-face {
     
     src: url("font/InputSans-Light.ttf");
 }
+*/
 
 .login {
-  
-  background: asset-url('splash_signin_v3.jpg') no-repeat bottom center fixed transparent;
+  font-family: 'Quicksand', sans-serif; 
+  background: asset-url('cover.jpg') no-repeat bottom center fixed transparent;
   background-size: cover;
   height: 100%;
   width: 100%;
@@ -22,7 +23,7 @@
     width: 500px;
     height: 450px;
     
-    background: rgba(255,255,255,.50);
+    background: rgba(255,255,255,.95);
 
     
     position: absolute;
@@ -53,13 +54,16 @@
   position: relative;
   top: 50%;
   transform: translateY(-62%);
+  font-family: 'Quicksand', sans-serif;
 }
 
 #signup_form {
+  font-family: 'Quicksand', sans-serif;
   margin-top: 25px;
 }
 
 #title {
+  font-family: 'Quicksand', sans-serif;
   font-size: 50px;
   text-align: center;
   height: 59px;
@@ -81,6 +85,7 @@
 
 #login_button,
 #sign_up_button {
+  font-family: 'Quicksand', sans-serif;
   display: block;
   margin: 0 auto;
   width: 175px;
