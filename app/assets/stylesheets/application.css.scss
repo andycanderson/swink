@@ -67,40 +67,63 @@
   100%{ opacity: 1; }
 }
 
+@mixin slider{
+  webkit-animation: slide .3s;
+  -moz-animation: slide .3s;   
+  -o-animation: slide .3s;     
+  animation: slide .3s;   
+}
+@-webkit-keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-moz-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-o-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;  }
+}
+
 nav {
-  background-color: rgba(255, 255, 255, .98);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 /* recruiter */
 body.recruiters-body {
   background: asset-url("recruiter.jpg") no-repeat bottom center fixed transparent;
   background-size: cover;
-  height: 100%;
-  width: 100%;
+  background-position: 30% -50%;
+  font-family: 'Quicksand', sans-serif;
 }
 div#postingScreen {
   background-color: rgba(255, 255, 255, .98);
 }
 div#notificationsContainer,
-div.newpostScreen,
-div.tags-container,
-div.search-results {
+div.newpostScreen, #postingScreen {
   background-color: rgba(255, 255, 255, .98);
-  border: 1px solid black;
+  border: 1px solid rgba(150,150,150,1);
+  border-radius: 10px;
 }
 
 /* applicant */
 body.applicants-body {
   background: asset-url('applicant.jpg') no-repeat bottom center fixed transparent;
   background-size: cover;
-  height: 100%;
-  width: 100%;
+  background-position: 30% -221%;
+  font-family: 'Quicksand', sans-serif;
 }
 div.container,
 div.form-container,
 div.profilePreview {
   background-color: rgba(255, 255, 255, .98);
-  border: 1px solid black;
+  border: 1px solid rgba(150,150,150,1);
+  border-radius: 10px;;
 }
 
 /*all pages*/
@@ -171,9 +194,6 @@ a:visited{
 
 
 /*Recruiter Home*/
-.recruiters-body{  
-  font-family: 'Quicksand', sans-serif;
-}
 #recruiter-nav{
   text-align: center;
   display:block;
@@ -250,6 +270,7 @@ li.button {
   text-align: center;
   margin:40px auto 0 auto;
   max-width: 600px;
+  height:580px;
 }
 .newpostInner{
   text-align: left;
@@ -274,8 +295,7 @@ li.button {
   padding: 7px 50px;
   font-size: 1.5em;
   border-radius: 2px;
-  top: -142px;  
-  left: 268px;
+  margin-bottom: 7px;
   position: relative;
   box-shadow: 0 0 .5px black;
   background-color: rgba(103,141,138,1);
@@ -289,21 +309,24 @@ li.button {
   position: relative;
   box-shadow: 0 0 .5px black;
   padding: 7px 59px;
-  top: -84px;
-  left: 87px;
+ 
   background-color: silver;
 }
 .postdown{
   height:50px;
   position: relative;
   left: 67px;
+  top: -12px;
+  margin-top: 12px;
+  margin-bottom: -24px;
 }
 .tag-scroll-container{
   max-width: 200px;
-  height:150px;
+  height:140px;
   overflow: scroll;
   margin-top: 10px;
 }
+
 
 /*view postings*/
 #postingScreen{
@@ -318,7 +341,7 @@ li.button {
 #myPostingsTitle{
 }
 #allPostings{
-  height:500px;
+  height:480px;
   border-top: solid black 1px;
   overflow: scroll;
 }
@@ -386,13 +409,30 @@ img.like{
   color:red;
 }
 .tags-container{
-  width:200px;
-  height:300px;
-  overflow: scroll;
+  width:220px;
+  height:359px;
+  overflow-y: scroll;
+  padding-left: 21px;
+  padding-top: 10px;
+  margin-left: -21px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(150,150,150,1);
+  border-radius: 10px;;
 }
 #searchResults{
-  height: 380px;
-  width: 420px;
+  height: 373px;
+  width: 450px;
+  margin-left: -12px;
+}
+.search-results{
+  height: 496px;
+  margin-top: 35px;
+  margin-bottom: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(150,150,150,1);
+  border-radius: 10px;
 }
 #search{
   background-color: rgba(103,141,138,1);
@@ -408,6 +448,13 @@ img.like{
 #placeholder-search, #searchheader{
   margin-top: 40px;
 }
+#searchheader{
+  margin-left: 9px;
+}
+#placeholder-search{
+  font-size: 22px;
+  text-align: center;
+}
 .applicant{
   @include fade;
   margin: -23px auto 0;
@@ -415,6 +462,7 @@ img.like{
   height:300px;
   padding: 30px;
   overflow: scroll;
+  z-index: 100;
 }
 .pagenum{
   text-align: center;
@@ -425,8 +473,11 @@ img.like{
   position:relative;
   height:50px;
 }
+.left{
+  left: 5px;
+}
 .right{
-  left: 377px;
+  left: 395px;
 }
 .left:hover, .right:hover{
   @include blinking;
@@ -434,7 +485,7 @@ img.like{
 .down{
   position: relative;
   left: 67px;
-  top: 22px;
+  top: 2px;
 }
 .carouselNavSearch{
   top: 140px;
@@ -447,11 +498,13 @@ img.like{
 #nDiv{
   @include fade;
   max-width: 600px;
+  height: 540px;
   margin: 50px auto 0 auto;
   /*border:1px solid black;*/
 }
 #notificationsContainer{
   padding:0 4em;
+  height: 530px;
 }
 #notTitle{
   text-align: center;
@@ -467,7 +520,7 @@ img.like{
 .x-not{
   height:40px;
   left:-23px;
-  
+  top: -36px;
 }
 .carouselNav{
   position:relative;
@@ -494,6 +547,7 @@ img.like{
 .carouselProfile{
   max-width: 350px;
   margin: -50px auto 0;
+  z-index:100;
 }
 .seeprofile{
   text-align: center;
@@ -510,7 +564,7 @@ img.like{
 .profileInfo{
   @include fade;
   overflow: scroll;
-  height:200px;
+  height:260px;
 }
 .pagenumN{
   text-align: center;
@@ -520,10 +574,6 @@ img.like{
 }
 
 /*Applicant Home*/
-.applicants-body{
-  font-family: 'Quicksand', sans-serif;
-
-}
 .profile-container{
   max-width: 1000px;
   margin: 0 auto;
@@ -603,33 +653,11 @@ img.like{
 .slideOffScreen{
   @include slider;
 }
-.totals{
-
-}
-@mixin slider{
-  webkit-animation: slide .3s;
-  -moz-animation: slide .3s;   
-  -o-animation: slide .3s;     
-  animation: slide .3s;   
-}
-@-webkit-keyframes slide {
-    0%{left:0;}
-    100% { left: -1500px;}
-}
-@-moz-keyframes slide{
-    0%{left:0;}
-    100% { left: -1500px;}
-}
-@-o-keyframes slide{
-    0%{left:0;}
-    100% { left: -1500px;}
-}
-@keyframes slide {
-    0%{left:0;}
-    100% { left: -1500px;  }
-}
 
 
+
+/*border: 1px solid rgba(150,150,150,1);
+border-radius: 10px;*/
 
 
 
