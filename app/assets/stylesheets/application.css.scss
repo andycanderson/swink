@@ -66,6 +66,46 @@
   100%{ opacity: 1; }
 }
 
+/* ==== test ==== test ==== test ==== test ==== test ==== */ 
+
+body {
+  background: asset-url('applicant.jpg') no-repeat bottom center fixed transparent;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+nav {
+  background-color: rgba(255, 255, 255, .98);
+}
+
+/* recruiter-test */
+div.recruiters-body {
+  background: asset-url('recruiter.jpg') no-repeat bottom center fixed transparent;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+div#postingScreen {
+  background-color: rgba(255, 255, 255, .98);
+}
+div#notificationsContainer,
+div.newpostScreen,
+div.tags-container,
+div.search-results {
+  background-color: rgba(255, 255, 255, .98);
+  border: 1px solid black;
+}
+
+/* applicant-test */
+div.container,
+div.form-container,
+div.profilePreview {
+  background-color: rgba(255, 255, 255, .98);
+  border: 1px solid black;
+}
+
+/* ==== test ==== test ==== test ==== test ==== test ==== */
+
 /*all pages*/
 .center{
   text-align: center;
