@@ -26,14 +26,18 @@ class ApplicantsController < ApplicationController
       respond_with(@hashy)
 
     else
-      redirect_to '/recruiter'
+      redirect_to root_path
     end
 
     
   end
 
-  def isApplicant?  
-    @current_user.type =="Applicant"
+  def isApplicant?
+    if @current_user  
+      @current_user.type =="Applicant"
+    else
+      false
+    end
   end
 
   def tagNames

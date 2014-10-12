@@ -16,6 +16,7 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Quicksand);
 @import url(http://fonts.googleapis.com/css?family=Quicksand:700);
+
 @mixin blinking{
   -webkit-animation: blink 3s infinite; /* Safari 4+ */
   -moz-animation:    blink 3s infinite; /* Fx 5+ */
@@ -66,8 +67,6 @@
   100%{ opacity: 1; }
 }
 
-/* ==== test ==== test ==== test ==== test ==== test ==== */ 
-
 nav {
   background-color: rgba(255, 255, 255, .98);
 }
@@ -104,9 +103,13 @@ div.profilePreview {
   border: 1px solid black;
 }
 
-/* ==== test ==== test ==== test ==== test ==== test ==== */
-
 /*all pages*/
+.bold{
+  font-weight: 700;
+}
+.profileSize{
+  font-size: 1.2em;
+}
 .center{
   text-align: center;
 }
@@ -275,9 +278,20 @@ li.button {
   left: 268px;
   position: relative;
   box-shadow: 0 0 .5px black;
+  background-color: rgba(103,141,138,1);
 }
-#submitPost:hover{
+#submitPost:hover, #resetPost:hover{
   color:white;
+}
+#resetPost{
+  font-size: 1.5em;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 0 .5px black;
+  padding: 7px 59px;
+  top: -84px;
+  left: 87px;
+  background-color: silver;
 }
 .postdown{
   height:50px;
@@ -301,6 +315,8 @@ li.button {
 #postingsContainer{
   padding:0 4em;
 }
+#myPostingsTitle{
+}
 #allPostings{
   height:500px;
   border-top: solid black 1px;
@@ -314,11 +330,23 @@ img.like{
   vertical-align: 0.1px;
 }
 .likedislike{
-  text-align: center;
+  margin-top: -9px;
+
 }
 .eachpost{
   margin-bottom: 40px;
 }
+.hightlightgreen{
+  color:green;
+  font-size: 3em;
+}
+.hightlightred{
+  color:red;
+}
+.up{
+  margin-top: -10px;
+}
+
 
 
 /*search*/
@@ -345,8 +373,9 @@ img.like{
   font-size: 1.2em;
   width: 180px;
   border-radius: 2px;
-  background-color: gray;
+  background-color: silver;
 }
+
 .inline-button.scrolly{
   margin-left: 0;
   width:180px;
@@ -366,11 +395,12 @@ img.like{
   width: 420px;
 }
 #search{
-  background-color: rgba(100,130,150,1);
+  background-color: rgba(103,141,138,1);
   box-shadow: 0 0 .5px black;
 }
 #reset{
   box-shadow: 0 0 .5px black;
+  display:block;
 }
 #search:hover, #reset:hover{
   color:white;
@@ -380,31 +410,23 @@ img.like{
 }
 .applicant{
   @include fade;
-  margin: 80px auto 0;
+  margin: -23px auto 0;
   max-width: 80%;
+  height:300px;
   padding: 30px;
-}
-.backwards{
-  position: relative;
-}
-.forwards{
-  position:relative;
+  overflow: scroll;
 }
 .pagenum{
   text-align: center;
   position:relative;
-  top:-250px;
+  /*top:-250px;*/
 }
 .left, .right, .down{
   position:relative;
   height:50px;
 }
-.left{
-  top: 166px;
-}
 .right{
-  top: -104px;
-  right: -392px;
+  left: 377px;
 }
 .left:hover, .right:hover{
   @include blinking;
@@ -413,6 +435,11 @@ img.like{
   position: relative;
   left: 67px;
   top: 22px;
+}
+.carouselNavSearch{
+  top: 140px;
+  position: relative;
+
 }
 
 
@@ -552,28 +579,56 @@ img.like{
 }
 #feedTitle, #likedTitle{
   border-bottom: 1px solid black;
+  
 }
 .inlineB.likebutton{
   vertical-align: -5.9px;
 }
 .singlejob{
   margin: 0 0 70px;
+
 }
 .jobTitle{
   margin-bottom: -3px;
 }
+.dislikePosition{
+  vertical-align: -13px;
+}
+.feedlikedislike{
+  margin-bottom: -22px;
+}
+.positionR{
+  position: relative;
+}
+.slideOffScreen{
+  @include slider;
+}
+.totals{
 
-/*================ FOR THE HOME PAGE =============================*/
-
-
-@font-face {
-    font-family: input_font;
-    src: url("font/InputSans-ExtraLight.ttf");
+}
+@mixin slider{
+  webkit-animation: slide .3s;
+  -moz-animation: slide .3s;   
+  -o-animation: slide .3s;     
+  animation: slide .3s;   
+}
+@-webkit-keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-moz-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-o-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;  }
 }
 
-html {
-  font-family: input_font;
-}
 
 
 

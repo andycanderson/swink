@@ -5,7 +5,7 @@
 /* universal */
 /*
 @font-face {
-    font-family: input_font;
+    
     src: url("font/InputSans-Light.ttf");
 }
 */
@@ -19,11 +19,6 @@
 }
 
 .window {
-    
-    /**
-    width: 455px;
-    height: 310px;
-    **/
 
     width: 500px;
     height: 450px;
@@ -55,8 +50,8 @@
 }
 
 #login_form {
-  // vertical-align: baseline;
-    position: relative;
+  vertical-align: baseline;
+  position: relative;
   top: 50%;
   transform: translateY(-62%);
   font-family: 'Quicksand', sans-serif;
@@ -75,7 +70,7 @@
   width: 375px;
   display: block;
   margin: 25px auto;
-  // margin-top: 0px;
+  margin-top: 0px;
   margin-bottom: 25px;
 }
 
@@ -84,7 +79,7 @@
   width: 375px;
   display: block;
   margin: 25px auto;
-  // margin-top: 0px;
+  margin-top: 0px;
   margin-bottom: 25px;
 }
 

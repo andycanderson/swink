@@ -2,8 +2,8 @@ Practice::Application.routes.draw do
   root to: 'home#index' 
 
   get 'home/new' => 'home#new', as: :sign_up
-  get 'home/about' => 'home#about', as: :about
-  get 'home/contact' => 'home#contact', as: :contact
+  # get 'home/about' => 'home#about', as: :about
+  # get 'home/contact' => 'home#contact', as: :contact
 
   post '/users' => 'users#create'
   post '/sessions' => 'sessions#create'

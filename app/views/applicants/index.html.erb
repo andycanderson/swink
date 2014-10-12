@@ -28,11 +28,13 @@
 			<div class="profilePreview">
 				<h2 id="previewtitle">Preview</h2>
 				<div id="userProfile">
-					<div>Name: {{name}}</div>
-					<div>Email: {{email}}</div>
-					<div>Links: {{link}}</div>
-					<div>
-						<div>Tags: </div>
+					<div class="profileSize"><span class="bold">Name: </span>{{name}}</div>
+					<div class="profileSize"><span class="bold">Email: </span>{{email}}</div>
+					<div class="profileSize"><span class="bold">Links: </span>
+						<div>{{link}}</div>
+					</div>
+					<div class="profileSize">
+						<div><span class="bold">Tags: </span></div>
 						<div ng-repeat="tag in tagArray">{{tag}}</div>
 					</div>
 				</div>
@@ -48,12 +50,15 @@
 	<h4 ng-if="counter==0 || feed==null">Start By Adding Tags In Your Profile</h4>
 	<div class="feedcontainer">
 		<div ng-repeat="job in feed" class="singlejob">
-			
+			<div class="positionR" ng-init="slide[$index]=false" ng-class="{slideOffScreen: slide[$index]}">
+			<div class="feedlikedislike">
+				<div class="inlineB likebutton button" ng-click="like(job.id); slide[$index]=true"><%=image_tag "like.svg", :class=>"like" %></div>
+				<div class="inlineB button" ng-click="dislike(job.id); slide[$index]=true"><%=image_tag "dislike.svg", :class=>"dislike dislikePosition" %></div>
+			</div>
 			<h3 class="jobTitle">{{job.title}}</h3>
 			<div>Description: {{job.description}}</div>
 			<div>Posted: {{job.created_at}}</div>
-			<div class="inlineB likebutton button" ng-click="like(job.id)"><%=image_tag "like.svg", :class=>"like" %></div>
-			<div class="inlineB button" ng-click="dislike(job.id)"><%=image_tag "dislike.svg", :class=>"dislike" %></div>
+			</div>
 		</div>
 	</div>
 </div>
