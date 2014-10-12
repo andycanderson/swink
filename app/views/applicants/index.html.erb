@@ -65,7 +65,8 @@
 
 
 <div ng-if="seeLikedJobs" class="container">
-	<h2 id="likedTitle">Liked Jobs: </h2>
+	<h2 id="likedTitle">Active Notifications: </h2>
+	<h3 ng-if="liked==[]">-None-</h3>
 	<div class="feedcontainer" class="singlejob">
 	<div ng-repeat="job in liked">
 		<h3 class="jobTitle">{{job.title}}</h3>

@@ -26,7 +26,7 @@
 	      <ul class="nav navbar-nav">
 	      	 <li class="inline button" ng-init="seeFeed=true" ng-click="toggle(seeFeed, 'f'); load()" ng-class="{selected: seeFeed}">Feed<span ng-if="counter" id="counter">({{counter}})</span></li>
 	        <li class="inline button" ng-click="toggle(seeLikedJobs, 'l'); load()"
-	ng-init="seeLikedJobs=false" ng-class="{selected: seeLikedJobs}">Liked Jobs</li>
+	ng-init="seeLikedJobs=false" ng-class="{selected: seeLikedJobs}">Active Notifications</li>
 	         <li class="inline button" ng-init="seeProfile=false" ng-click="toggle(seeProfile, 'p'); getProfileInfo()" ng-class="{selected: seeProfile}">Edit Profile</li>
 	         <li class="inline button lineheight"><a href="/signout"><%= link_to "Log Out", sign_out_path, method: :delete, :id=>"keepdark"%></a></li>
 	      </ul>

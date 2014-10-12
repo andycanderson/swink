@@ -40,9 +40,20 @@ class Profile < ActiveRecord::Base
     feed_returned = feed_returned - self.postings 
   end
 
-# returns list of liked jobs
+# returns list of liked jobs that haven't been removed
+# from recruiter's feed
   def getLiked
-    self.postings.where(like: true)
+    # gets array of likes
+    likes = self.likes.where(notify: true)
+    postings = []
+    if likes == []
+      return likes
+    else
+      likes.each do |like|
+        postings << like.posting
+      end
+    end
+    postings
   end
 
   def self.search tags
