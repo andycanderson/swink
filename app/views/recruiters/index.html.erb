@@ -31,6 +31,7 @@
 	<div id="postingsContainer">
 		<h2>My Postings</h2>
 		<div id="allPostings">
+			<h4 ng-if="postings.length==0">Start Posting Jobs!</h4>
 			<div ng-repeat="posting in postings">
 				<div class="eachpost">	
 				<h4>{{posting.title}}</h4>
@@ -91,9 +92,15 @@
 							</div>
 
 							<div class="applicant">
-								<div>Name: {{searchnames[$index]}}</div>
-								<div>Email: {{searchemails[$index]}}</div>
-								<div>Link: {{applicant["link"]}}</div>
+								<div class="profileSize"><span class="bold">Name: </span> {{searchnames[$index]}}</div>
+								<div class="profileSize"><span class="bold">Email: </span>{{searchemails[$index]}}</div>
+								<div class="profileSize"><span class="bold">Links: </span>
+									<div ng-repeat="link in searchlinks[$index]">{{link}}</div>
+								</div>
+								<div class="profileSize"><span class="bold">Tags:</span>
+									<div ng-repeat="tag in searchtaglists[$index]">{{tag}}
+									</div>
+								</div>
 							</div>
 							
 							
@@ -113,7 +120,7 @@
 	<div id="notificationsContainer">
 		<h2 id="notTitle">Notifications</h2>
 		<div id="notifications">
-			<h4 class="center" ng-if="counter==0">-No Notifications Yet-</h4>
+			<h4 class="center" ng-if="counter==0 || !counter">-No Notifications-</h4>
 			<div ng-repeat="n in notifications">
 				<div ng-init="ncarousel[$index]=false; ncarousel[0]=true">
 					<div ng-if="ncarousel[$index]">
@@ -128,13 +135,18 @@
 
 							
 						<div class="carouselProfile">
-							<div ng-if="!showP[n.id]" class="likedat">{{names[$index]}} liked your post at {{n["created_at"]}}</div>
+							<div ng-if="!showP[n.id]" class="likedat profileSize">{{names[$index]}} liked your post at {{n["created_at"]}}</div>
 						
 							<div ng-if="showP[n.id]" class="profileInfo">
-								<div>{{names[$index]}}</div>
-								<div>{{emails[$index]}}</div>
-								<div>Links:<div ng-repeat="link in linksA[$index]">{{link}}</div></div>
-								<div>Tags:<div ng-repeat="tag in taglistsA[$index]">{{tag}}</div></div>
+								<div class="profileSize"><span class="bold">Name: </span>{{names[$index]}}</div>
+								<div class="profileSize"><span class="bold">Email: </span>{{emails[$index]}}</div>
+
+								<div class="profileSize"><span class="bold">Links: </span>
+									<div class="" ng-repeat="link in linksA[$index]">{{link}}</div>
+								</div>
+								<div class="profileSize"><span class="bold">Tags: </span>
+									<div ng-repeat="tag in taglistsA[$index]">{{tag}}</div>
+								</div>
 							</div>
 						</div>
 					</div>

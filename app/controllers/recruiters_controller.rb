@@ -22,11 +22,19 @@ class RecruitersController < ApplicationController
           @n_email << n.profile.applicant.email
           @n_profile << n.profile
 
-          # split by new lines, space and commas
+          # split by new lines, space and commas into arrays for ng-repeats
           # check if empty don't execute methods on nil or empty strings
-          n.profile.link!="" || n.profile.link!=nil ? @links << n.profile.link.split(/[,\s]+/) : @links << []
-          n.profile.tag_list!="" || n.profile.tag_list!=nil ? @taglists << n.profile.tag_list.split(" ") : @tag_lists << ""
-        end
+          if n.profile.link != "" && n.profile.link!=nil
+            @links << n.profile.link.split(/[,\s]+/)
+          else
+            @links << []
+          end
+          if n.profile.tag_list != "" && n.profile.tag_list != nil
+            @taglists << n.profile.tag_list.split(" ")
+          else
+            @taglists << []
+          end
+        end 
       end
 
       # hash to pass through angular

@@ -64,8 +64,10 @@
 		$scope.getProfileInfo = function(){
 			$http.get('/myprofile.json').success(function(data){
 				$scope.link = data.link;
-				// highlights in red already selected and sets up array
-				$scope.tagArray = data.tag_list.split(" ");
+				// highlights in red already selected and sets up array and checks for existing tags
+				if (data.tag_list != null){
+					$scope.tagArray = data.tag_list.split(" ");
+				}
 			});
 		}
 

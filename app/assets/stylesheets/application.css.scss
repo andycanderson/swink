@@ -68,6 +68,12 @@
 }
 
 /*all pages*/
+.bold{
+  font-weight: 700;
+}
+.profileSize{
+  font-size: 1.2em;
+}
 .center{
   text-align: center;
 }
@@ -355,6 +361,7 @@ img.like{
 }
 #reset{
   box-shadow: 0 0 .5px black;
+  display:block;
 }
 #search:hover, #reset:hover{
   color:white;
@@ -364,9 +371,11 @@ img.like{
 }
 .applicant{
   @include fade;
-  margin: 44px auto 0;
+  margin: -23px auto 0;
   max-width: 80%;
+  height:300px;
   padding: 30px;
+  overflow: scroll;
 }
 .pagenum{
   text-align: center;
