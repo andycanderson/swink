@@ -43,7 +43,7 @@
 	  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 	}])
 
-	.controller('applicantCtrl', ['$scope', '$http', function($scope, $http) {
+	.controller('applicantCtrl', ['$scope', '$timeout', '$http', function($scope, $timeout, $http) {
 		console.log("Angular Ready");
 		
 		// when first landing or refreshing get data
@@ -84,12 +84,19 @@
 		}
 
 		$scope.like = function(id){
-			$http.get('/like/'+id).success(function(data){
-				$scope.load();
-			});
+			$scope.id = id;
+			$timeout(function () {
+				console.log(id);
+	            $http.get('/like/'+$scope.id).success(function(data){
+	            	$scope.load();
+	            });
+			}, 100);
+
+			
 		}
 
 		$scope.dislike = function(id){
+
 			$http.get('/dislike/'+id).success(function(data){
 				$scope.load();
 			});

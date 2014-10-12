@@ -34,7 +34,7 @@
 			<h4 ng-if="postings.length==0">Start Posting Jobs!</h4>
 			<div ng-repeat="posting in postings">
 				<div class="eachpost">	
-				<h4>{{posting.title}}</h4>
+				<h3>{{posting.title}}</h3>
 				<p class="up">{{posting.description}}</p>
 				<div class="likedislike">
 					<div class="likestat"><%=image_tag 'like.svg', :class=>"like"%><span ng-bind="posting.like"></span></div>

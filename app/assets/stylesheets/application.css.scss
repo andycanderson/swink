@@ -67,6 +67,30 @@
   100%{ opacity: 1; }
 }
 
+@mixin slider{
+  webkit-animation: slide .3s;
+  -moz-animation: slide .3s;   
+  -o-animation: slide .3s;     
+  animation: slide .3s;   
+}
+@-webkit-keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-moz-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@-o-keyframes slide{
+    0%{left:0;}
+    100% { left: -1500px;}
+}
+@keyframes slide {
+    0%{left:0;}
+    100% { left: -1500px;  }
+}
+
+
 /*all pages*/
 .bold{
   font-weight: 700;
@@ -292,7 +316,8 @@ img.like{
   vertical-align: 0.1px;
 }
 .likedislike{
-  text-align: center;
+  margin-top: -9px;
+
 }
 .eachpost{
   margin-bottom: 40px;
@@ -540,15 +565,29 @@ img.like{
 }
 #feedTitle, #likedTitle{
   border-bottom: 1px solid black;
+  
 }
 .inlineB.likebutton{
   vertical-align: -5.9px;
 }
 .singlejob{
   margin: 0 0 70px;
+
 }
 .jobTitle{
   margin-bottom: -3px;
+}
+.dislikePosition{
+  vertical-align: -13px;
+}
+.feedlikedislike{
+  margin-bottom: -22px;
+}
+.positionR{
+  position: relative;
+}
+.slideOffScreen{
+  @include slider;
 }
 
 
