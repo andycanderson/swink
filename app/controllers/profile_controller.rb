@@ -12,8 +12,8 @@ class ProfileController < ApplicationController
 
   def update
     # update profile when user patches
-    @current_user.profile.link = params[:link]
-    @current_user.profile.tag_list = params[:tag_list].join(" ")
+    params[:link] != nil && params[:link] != "" ? @current_user.profile.link = params[:link] : @current_user.profile.link = ""
+    params[:tag_list] != nil && params[:tag_list] != "" ? @current_user.profile.tag_list = params[:tag_list].join(" ") : @current_user.profile.tag_list = ""
     @current_user.profile.save
 
     # rewrites header to resolve 500 error

@@ -16,6 +16,7 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Quicksand);
 @import url(http://fonts.googleapis.com/css?family=Quicksand:700);
+
 @mixin blinking{
   -webkit-animation: blink 3s infinite; /* Safari 4+ */
   -moz-animation:    blink 3s infinite; /* Fx 5+ */
@@ -541,17 +542,6 @@ img.like{
   margin-bottom: -3px;
 }
 
-/*================ FOR THE HOME PAGE =============================*/
-
-
-@font-face {
-    font-family: input_font;
-    src: url("/font/InputSans-ExtraLight.ttf");
-}
-
-html {
-  font-family: input_font;
-}
 
 
 
