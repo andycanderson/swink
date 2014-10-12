@@ -29,7 +29,8 @@
 <!-- Recruiter's Postings -->
 <div ng-if="showPosting" id="postingScreen">
 	<div id="postingsContainer">
-		<h2>My Postings</h2>
+		<h2 id="myPostingsTitle">My Postings:</h2>
+		<h5 class="totals">Totals: Like {{lstat}} Dislike {{dstat}}</h5>
 		<div id="allPostings">
 			<h4 ng-if="postings.length==0">Start Posting Jobs!</h4>
 			<div ng-repeat="posting in postings">

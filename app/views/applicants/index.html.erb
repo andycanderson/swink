@@ -28,13 +28,13 @@
 			<div class="profilePreview">
 				<h2 id="previewtitle">Preview</h2>
 				<div id="userProfile">
-					<div>Name: {{name}}</div>
-					<div>Email: {{email}}</div>
-					<div>Links: 
+					<div class="profileSize"><span class="bold">Name: </span>{{name}}</div>
+					<div class="profileSize"><span class="bold">Email: </span>{{email}}</div>
+					<div class="profileSize"><span class="bold">Links: </span>
 						<div>{{link}}</div>
 					</div>
-					<div>
-						<div>Tags: </div>
+					<div class="profileSize">
+						<div><span class="bold">Tags: </span></div>
 						<div ng-repeat="tag in tagArray">{{tag}}</div>
 					</div>
 				</div>

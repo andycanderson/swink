@@ -131,11 +131,24 @@ ng-init="newPosting=false" ng-class="{selected: newPosting}">Create Posting</li>
 			}
 		}
 
-		// Runs when loaded
+		// Runs when loaded (fetch new page data)
 		// Load all posted jobs by this recruiter
+		// Gets total likes and dislikes
+		// gets all tags in tags table
+		// gets notifications and all associated 
+		// user data
+		// gets all of recruiters postings
 		$scope.getPostings = function(){
 			$http.get('/recruiter.json').success(function(data){
 				$scope.postings = data.postings;
+				$scope.lstat = 0;
+				$scope.dstat = 0;
+				if (data.postings.length>0){
+					for (var i = 0; i < data.postings.length; i++){
+						$scope.lstat += data.postings[i].like;
+						$scope.dstat += data.postings[i].dislike; 
+					}
+				}
 				$scope.tags = data.tags;
 				$scope.notifications = data.notifications;
 				if($scope.notifications!=null){

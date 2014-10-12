@@ -303,6 +303,8 @@ li.button {
 #postingsContainer{
   padding:0 4em;
 }
+#myPostingsTitle{
+}
 #allPostings{
   height:500px;
   border-top: solid black 1px;
@@ -588,6 +590,9 @@ img.like{
 }
 .slideOffScreen{
   @include slider;
+}
+.totals{
+
 }
 
 
