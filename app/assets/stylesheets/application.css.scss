@@ -100,6 +100,7 @@ body.recruiters-body {
   background-size: cover;
   background-position: 30% -50%;
   font-family: 'Quicksand', sans-serif;
+  @include fade;
 }
 div#postingScreen {
   background-color: rgba(255, 255, 255, .98);
@@ -117,6 +118,7 @@ body.applicants-body {
   background-size: cover;
   background-position: 30% -221%;
   font-family: 'Quicksand', sans-serif;
+  @include fade;
 }
 div.container,
 div.form-container,
@@ -187,9 +189,80 @@ a:visited{
 
 
 /*Login Home*/
+.login {
+  font-family: 'Quicksand', sans-serif; 
+  background: asset-url('cover.jpg') no-repeat bottom center fixed transparent;
+  background-size: cover;
+  @include fade;
+}
 #no-border{
   border:none;
+  max-width: 450px;
+  margin-top: 100px;
+
+  height:400px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(150,150,150,1);
+  border-radius: 10px;;
 }
+.btn-default{
+  border:none;
+  background-color: silver;
+}
+
+#title-login {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  display: block;
+  margin-bottom: 12px;
+
+}
+#login_button,
+#sign_up_button,
+#show-sign-up,
+#show-login {
+  font-family: 'Quicksand', sans-serif;
+  display: block;
+  margin: 0 auto;
+  width: 175px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1.2em;
+}
+#signup-form{
+  display: none;
+  padding: 30px 0 50px;
+}
+#login-form{
+  padding: 40px 0;
+}
+/*hide extra padding*/
+@media (max-width: 767px){
+label.col-sm-1.control-label.sr-only {
+    display: none; 
+  }
+}
+#show-sign-up, #show-login{
+  background-color: rgba(103,141,138,1);
+}
+#show-sign-up:hover, #show-login:hover{
+  background-color: rgba(103,141,138,.8);
+  color:white;
+}
+#login_button:hover, #sign_up_button:hover{
+  color:white;
+}
+.form-control{
+  height:initial;
+  padding:10px;
+  font-size: 1.2em;
+  border: 1px solid rgba(150,150,150,1);
+}
+#login_div{
+  margin-top: -10px;
+}
+
 
 
 
@@ -197,7 +270,6 @@ a:visited{
 #recruiter-nav{
   text-align: center;
   display:block;
-  background-color: black
 }
 .inline{
   color:black;

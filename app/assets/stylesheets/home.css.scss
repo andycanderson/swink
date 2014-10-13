@@ -4,68 +4,7 @@
 
 
 
-.login {
-  font-family: 'Quicksand', sans-serif; 
-  background: asset-url('cover.jpg') no-repeat bottom center fixed transparent;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-}
 
-.window {
-    width: 500px;
-    height: 450px;
-    background: rgba(255,255,255,.95);
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-#login_form {
-  vertical-align: baseline;
-  position: relative;
-  top: 50%;
-  transform: translateY(-62%);
-  font-family: 'Quicksand', sans-serif;
-}
-
-#signup_form {
-  font-family: 'Quicksand', sans-serif;
-  margin-top: 25px;
-}
-
-#title {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 50px;
-  text-align: center;
-  height: 59px;
-  width: 375px;
-  display: block;
-  margin: 25px auto;
-  margin-top: 0px;
-  margin-bottom: 25px;
-}
-
-#logo {
-  height: 59px;
-  width: 375px;
-  display: block;
-  margin: 25px auto;
-  margin-top: 0px;
-  margin-bottom: 25px;
-}
-
-#login_button,
-#sign_up_button {
-  font-family: 'Quicksand', sans-serif;
-  display: block;
-  margin: 0 auto;
-  width: 175px;
-  margin-top: 15px;
-}
 
 
 
