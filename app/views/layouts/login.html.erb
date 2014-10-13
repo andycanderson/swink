@@ -19,22 +19,21 @@
 <script>
 
 
+$(function(){
+  $("#show-sign-up").click(function() {
+    $("#no-border").css("height","550px");
+    $("#no-border").css("margin-top", "50px");
+    $("#login-form").hide();
+    $("#signup-form").fadeIn();
+  });
 
-$("#show-sign-up").click(function() {
-  $("#no-border").css("height","550px");
-  $("#no-border").css("margin-top", "50px");
-
-  $("#login-form").hide();
-  $("#signup-form").fadeIn();
+  $("#show-login").click(function(){
+    $("#no-border").css("height", "400px");
+    $("#no-border").css("margin-top", "100px");
+    $("#login-form").fadeIn();
+    $("#signup-form").hide();
+  });
 });
-
-$("#show-login").click(function(){
-  $("#no-border").css("height", "400px");
-  $("#no-border").css("margin-top", "100px");
-  $("#login-form").fadeIn();
-  $("#signup-form").hide();
-});
-
 
 
 </script>
