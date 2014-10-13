@@ -12,7 +12,7 @@
 
 .login {
   font-family: 'Quicksand', sans-serif; 
-  background: asset-url('cover.jpg') no-repeat bottom center fixed transparent;
+  background: asset-url('recruiter.jpg') no-repeat bottom center fixed transparent;
   background-size: cover;
   height: 100%;
   width: 100%;
@@ -28,7 +28,8 @@
     width: 500px;
     height: 450px;
     
-    background: rgba(255,255,255,.95);
+    background: rgb(255,255,255);
+    border: 1px solid black;
 
     
     position: absolute;
