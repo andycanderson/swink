@@ -96,10 +96,9 @@ nav {
 
 /* recruiter */
 body.recruiters-body {
-  background: asset-url("recruiter.jpg") no-repeat bottom center fixed transparent;
+  font-family: 'Quicksand', sans-serif; 
+  background: asset-url('cover.jpg') no-repeat bottom center fixed transparent;
   background-size: cover;
-  background-position: 30% -50%;
-  font-family: 'Quicksand', sans-serif;
   @include fade;
 }
 div#postingScreen {
@@ -190,9 +189,10 @@ a:visited{
 
 /*Login Home*/
 .login {
-  font-family: 'Quicksand', sans-serif; 
-  background: asset-url('cover.jpg') no-repeat bottom center fixed transparent;
+  background: asset-url("recruiter.jpg") no-repeat bottom center fixed transparent;
   background-size: cover;
+  background-position: 30% -50%;
+  font-family: 'Quicksand', sans-serif;
   @include fade;
 }
 #no-border{
