@@ -103,11 +103,11 @@ body.recruiters-body {
   @include fade;
 }
 div#postingScreen {
-  background-color: rgba(255, 255, 255, .98);
+  background-color: rgba(255, 255, 255, 1);
 }
 div#notificationsContainer,
 div.newpostScreen, #postingScreen {
-  background-color: rgba(255, 255, 255, .98);
+  background-color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(150,150,150,1);
   border-radius: 10px;
 }
@@ -123,7 +123,7 @@ body.applicants-body {
 div.container,
 div.form-container,
 div.profilePreview {
-  background-color: rgba(255, 255, 255, .98);
+  background-color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(150,150,150,1);
   border-radius: 10px;;
 }
