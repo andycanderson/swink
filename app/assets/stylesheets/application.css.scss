@@ -562,7 +562,10 @@ img.like{
 .carouselNavSearch{
   top: 140px;
   position: relative;
-
+}
+#noResults{
+  text-align: center;
+  font-size: 18px;
 }
 
 
@@ -725,11 +728,6 @@ img.like{
 .slideOffScreen{
   @include slider;
 }
-
-
-
-/*border: 1px solid rgba(150,150,150,1);
-border-radius: 10px;*/
 
 
 

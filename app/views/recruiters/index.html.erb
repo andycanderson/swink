@@ -81,7 +81,7 @@
 			<!-- carousel -->
 			<div id="searchResults">
 			<!-- display if zero results -->
-				<div ng-if="applicants.length==0">No Results</div>
+				<div ng-if="applicants.length==0" id="noResults">-No Results-</div>
 
 				<div ng-repeat="applicant in applicants" >
 					<div ng-init="carousel[$index]=false; carousel[0]=true">
